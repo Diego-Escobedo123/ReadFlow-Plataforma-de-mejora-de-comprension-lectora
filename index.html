@@ -6,7 +6,7 @@
   <title>ReadFlow — Presentación del Proyecto</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -14,26 +14,26 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-        <span class="brand-mark">R</span>
-        <div>
-          <p class="brand-name mb-0">ReadFlow</p>
-          <p class="brand-tag mb-0">Plataforma de comprensión lectora</p>
+      <a class="navbar-brand d-flex align-items-center gap-3" href="#">
+        <div class="brand-logo">
+          <span>RF</span>
+          <div class="brand-logo-ring"></div>
         </div>
+        <span class="brand-name">ReadFlow</span>
       </a>
       <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-        <i class="bi bi-list text-white fs-4"></i>
+        <i class="bi bi-list fs-4" style="color:#fff"></i>
       </button>
       <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1 mt-3 mt-lg-0">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2 mt-3 mt-lg-0">
           <li class="nav-item"><a class="nav-link" href="#technologies">Tecnologías</a></li>
-          <li class="nav-item"><a class="nav-link" href="#audience">Público objetivo</a></li>
-          <li class="nav-item"><a class="nav-link" href="#business">Modelo de negocio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#audience">Público</a></li>
+          <li class="nav-item"><a class="nav-link" href="#business">Negocio</a></li>
           <li class="nav-item"><a class="nav-link" href="#purpose">Finalidad</a></li>
-          <li class="nav-item"><a class="nav-link" href="#future">Visión futura</a></li>
+          <li class="nav-item"><a class="nav-link" href="#future">Visión</a></li>
           <li class="nav-item ms-lg-2">
-            <button class="btn-toggle" onclick="toggleDarkMode()" title="Cambiar tema">
-              <i class="bi bi-moon-fill" id="darkModeIcon"></i>
+            <button class="theme-btn" onclick="toggleDarkMode()" id="themeBtn">
+              <i class="bi bi-sun-fill" id="darkModeIcon"></i>
             </button>
           </li>
         </ul>
@@ -41,116 +41,138 @@
     </div>
   </nav>
 
-  <!-- ── HERO ── -->
-  <header class="hero-section">
-    <div class="hero-stars"></div>
-    <div class="container">
-      <div class="row align-items-center min-vh-100 py-5">
-
-        <div class="col-lg-6 pt-5 pt-lg-0">
-          <p class="eyebrow">Proyecto universitario · Diego Andrés Escobedo Morán · UFM 2026</p>
-          <h1 class="hero-title">Mejora tu lectura.<br>Comprende <span class="accent">más.</span></h1>
-          <p class="hero-lead">
-            ReadFlow es una plataforma web diseñada para mejorar la comprensión lectora
-            y la velocidad de lectura mediante textos seleccionados, preguntas de comprensión
-            y retroalimentación personalizada en tiempo real.
+  <section class="hero" id="home">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="container position-relative">
+      <div class="row min-vh-100 align-items-center py-5">
+        <div class="col-lg-7 pt-5">
+          <div class="hero-label">
+            <span class="hero-label-dot"></span>
+            Proyecto universitario · Diego Andrés Escobedo Morán · UFM 2026
+          </div>
+          <h1 class="hero-h1">
+            La forma en que lees<br>
+            <span class="hero-h1-accent">está a punto<br>de cambiar.</span>
+          </h1>
+          <p class="hero-p">
+            ReadFlow es una plataforma web que mejora tu velocidad de lectura y comprensión
+            mediante textos seleccionados, preguntas y retroalimentación personalizada.
+            Sin apps. Sin instalaciones. Solo tú y el texto.
           </p>
-          <div class="d-flex gap-3 flex-wrap">
-            <a href="#technologies" class="btn-primary-rf">Ver tecnologías</a>
-            <a href="#purpose" class="btn-ghost-rf">Finalidad del proyecto</a>
+          <div class="hero-actions">
+            <a href="#technologies" class="btn-main">Explorar proyecto <i class="bi bi-arrow-right ms-2"></i></a>
+            <a href="#purpose" class="btn-outline-main">¿Por qué existe?</a>
           </div>
         </div>
-
-        <div class="col-lg-6 mt-5 mt-lg-0 d-flex justify-content-center">
-          <div class="hero-visual">
-            <div class="hv-topbar">
-              <div class="hv-dots">
-                <span class="dot-r"></span>
-                <span class="dot-y"></span>
-                <span class="dot-g"></span>
+        <div class="col-lg-5 mt-5 mt-lg-0">
+          <div class="hero-metrics">
+            <div class="metric-row">
+              <div class="metric-box metric-box--big">
+                <span class="metric-num">+40<span class="metric-pct">%</span></span>
+                <span class="metric-lbl">Velocidad de lectura</span>
+                <div class="metric-bar"><div class="metric-bar-fill" style="width:75%"></div></div>
               </div>
-              <span class="hv-label">ReadFlow · v1.0</span>
+              <div class="metric-box metric-box--big">
+                <span class="metric-num">+35<span class="metric-pct">%</span></span>
+                <span class="metric-lbl">Comprensión lectora</span>
+                <div class="metric-bar"><div class="metric-bar-fill" style="width:60%"></div></div>
+              </div>
             </div>
-            <div class="hv-body">
-              <div class="hv-book">
-                <i class="bi bi-book-fill"></i>
-                <div class="hv-glow"></div>
+            <div class="metric-row">
+              <div class="metric-box">
+                <i class="bi bi-globe metric-icon"></i>
+                <span class="metric-tag">100% Web</span>
               </div>
-              <h4 class="hv-title">Comprensión lectora mejorada</h4>
-              <p class="hv-desc">Textos · Preguntas · Retroalimentación personalizada</p>
-              <div class="hv-stats">
-                <div class="hv-stat">
-                  <span class="hv-stat-val">+40%</span>
-                  <span class="hv-stat-label">Velocidad</span>
-                </div>
-                <div class="hv-stat">
-                  <span class="hv-stat-val">+35%</span>
-                  <span class="hv-stat-label">Comprensión</span>
-                </div>
-                <div class="hv-stat">
-                  <span class="hv-stat-val">100%</span>
-                  <span class="hv-stat-label">Web</span>
-                </div>
+              <div class="metric-box">
+                <i class="bi bi-people metric-icon"></i>
+                <span class="metric-tag">Para todos</span>
+              </div>
+              <div class="metric-box">
+                <i class="bi bi-lightning metric-icon"></i>
+                <span class="metric-tag">Tiempo real</span>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
-  </header>
+  </section>
 
   <main>
 
     <!-- Tecnologías -->
     <section class="rf-section" id="technologies">
       <div class="container">
-        <div class="text-center mb-5">
-          <p class="section-kicker">Stack tecnológico</p>
-          <h2 class="section-title">Tecnologías utilizadas y por qué</h2>
-          <p class="section-lead mx-auto">Cada tecnología fue elegida con un propósito claro: construir una plataforma robusta, escalable y accesible desde cualquier navegador.</p>
+        <div class="section-label">01 — Stack tecnológico</div>
+        <div class="row align-items-end mb-5">
+          <div class="col-lg-6">
+            <h2 class="section-h2">Tecnologías usadas<br><span class="text-accent">y por qué.</span></h2>
+          </div>
+          <div class="col-lg-6">
+            <p class="section-p">Cada tecnología fue elegida con un propósito claro: construir una plataforma robusta, escalable y accesible desde cualquier navegador sin instalaciones.</p>
+          </div>
         </div>
-        <div class="row g-4">
+        <div class="row g-3">
           <div class="col-md-6 col-lg-4">
-            <div class="rf-card h-100">
-              <div class="rf-card-icon icon--green"><i class="bi bi-layout-wtf"></i></div>
+            <div class="tech-card">
+              <div class="tech-card-top">
+                <div class="tc-icon tc-icon--blue"><i class="bi bi-layout-wtf"></i></div>
+                <span class="tc-num">01</span>
+              </div>
               <h3>HTML5 + CSS3 + Bootstrap</h3>
-              <p>Usamos Bootstrap para garantizar un diseño responsivo y profesional sin construir todo desde cero. Permite que ReadFlow se vea bien en cualquier dispositivo.</p>
+              <p>Bootstrap garantiza diseño responsivo y componentes accesibles desde cualquier dispositivo sin construir todo desde cero.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
-            <div class="rf-card h-100">
-              <div class="rf-card-icon icon--yellow"><i class="bi bi-braces"></i></div>
+            <div class="tech-card">
+              <div class="tech-card-top">
+                <div class="tc-icon tc-icon--yellow"><i class="bi bi-braces"></i></div>
+                <span class="tc-num">02</span>
+              </div>
               <h3>JavaScript</h3>
-              <p>Maneja toda la lógica del cliente: interacciones dinámicas, manipulación del DOM y comunicación con el backend sin necesidad de recargar la página.</p>
+              <p>Maneja toda la lógica del cliente: interacciones dinámicas, manipulación del DOM y comunicación con el backend en tiempo real.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
-            <div class="rf-card h-100">
-              <div class="rf-card-icon icon--red"><i class="bi bi-hexagon-fill"></i></div>
+            <div class="tech-card tech-card--featured">
+              <div class="tech-card-top">
+                <div class="tc-icon tc-icon--red"><i class="bi bi-hexagon-fill"></i></div>
+                <span class="tc-num">03</span>
+              </div>
               <h3>Angular</h3>
-              <p>Elegido como framework principal por su arquitectura de componentes, servicios y rutas que permite construir una SPA organizada y escalable.</p>
+              <p>Framework principal para construir la SPA con componentes, servicios, rutas y pipes que estructuran toda la lógica del frontend.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
-            <div class="rf-card h-100">
-              <div class="rf-card-icon icon--teal"><i class="bi bi-server"></i></div>
+            <div class="tech-card">
+              <div class="tech-card-top">
+                <div class="tc-icon tc-icon--teal"><i class="bi bi-server"></i></div>
+                <span class="tc-num">04</span>
+              </div>
               <h3>Node.js + Express</h3>
-              <p>Backend liviano y eficiente que expone una API REST para gestionar usuarios, textos, preguntas y resultados de cada sesión de lectura.</p>
+              <p>Backend liviano con API REST para gestionar usuarios, textos, preguntas y resultados de cada sesión de lectura.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
-            <div class="rf-card h-100">
-              <div class="rf-card-icon icon--green"><i class="bi bi-database-fill"></i></div>
+            <div class="tech-card">
+              <div class="tech-card-top">
+                <div class="tc-icon tc-icon--green"><i class="bi bi-database-fill"></i></div>
+                <span class="tc-num">05</span>
+              </div>
               <h3>MongoDB</h3>
-              <p>Base de datos NoSQL flexible que se adapta bien a la estructura variable de los textos, preguntas e historial de progreso de cada usuario.</p>
+              <p>Base de datos NoSQL flexible para almacenar perfiles, textos, preguntas e historial de progreso con estructura escalable.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
-            <div class="rf-card h-100">
-              <div class="rf-card-icon icon--purple"><i class="bi bi-git"></i></div>
+            <div class="tech-card">
+              <div class="tech-card-top">
+                <div class="tc-icon tc-icon--purple"><i class="bi bi-git"></i></div>
+                <span class="tc-num">06</span>
+              </div>
               <h3>Git + GitHub</h3>
-              <p>Control de versiones para gestionar el código de forma organizada, mantener un historial claro de cambios y facilitar el trabajo en equipo.</p>
+              <p>Control de versiones para gestionar el código de forma organizada y mantener un historial claro de todos los cambios.</p>
             </div>
           </div>
         </div>
@@ -158,44 +180,44 @@
     </section>
 
     <!-- Público objetivo -->
-    <section class="rf-section-dark" id="audience">
+    <section class="rf-section rf-section--alt" id="audience">
       <div class="container">
-        <div class="row align-items-center g-5">
-          <div class="col-lg-5">
-            <p class="section-kicker section-kicker--light">Público objetivo</p>
-            <h2 class="section-title section-title--light">¿Para quién es ReadFlow?</h2>
-            <p class="section-lead section-lead--light">ReadFlow está pensado para cualquier persona que lea. La lectura es una habilidad universal y mejorarla beneficia a todos, sin importar edad ni nivel.</p>
+        <div class="section-label">02 — Público objetivo</div>
+        <div class="row mb-5">
+          <div class="col-lg-6">
+            <h2 class="section-h2">¿Para quién<br><span class="text-accent">es ReadFlow?</span></h2>
           </div>
-          <div class="col-lg-7">
-            <div class="row g-3">
-              <div class="col-sm-6">
-                <div class="audience-card h-100">
-                  <div class="audience-emoji">🎓</div>
-                  <h4>Estudiantes</h4>
-                  <p>Universitarios y de secundaria que necesitan mejorar su comprensión lectora para rendir mejor en sus materias académicas.</p>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="audience-card h-100">
-                  <div class="audience-emoji"></div>
-                  <h4>Profesionales</h4>
-                  <p>Personas que deben procesar grandes volúmenes de información en su trabajo: informes, documentos técnicos y correos.</p>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="audience-card h-100">
-                  <div class="audience-emoji"></div>
-                  <h4>Adultos en general</h4>
-                  <p>Cualquier persona que quiera desarrollar el hábito de la lectura y aprovechar mejor su tiempo leyendo.</p>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="audience-card h-100">
-                  <div class="audience-emoji"></div>
-                  <h4>Autodidactas</h4>
-                  <p>Personas que aprenden por su cuenta y quieren sacar el máximo provecho de cada texto que leen en su proceso de aprendizaje.</p>
-                </div>
-              </div>
+          <div class="col-lg-6 d-flex align-items-center">
+            <p class="section-p">ReadFlow está pensado para cualquier persona que lea. La lectura es una habilidad universal y mejorarla beneficia a todos sin importar edad ni nivel.</p>
+          </div>
+        </div>
+        <div class="row g-3">
+          <div class="col-sm-6 col-lg-3">
+            <div class="audience-card">
+              <span class="ac-emoji">🎓</span>
+              <h4>Estudiantes</h4>
+              <p>Universitarios y de secundaria que necesitan mejorar su comprensión lectora para rendir mejor académicamente.</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3">
+            <div class="audience-card">
+              <span class="ac-emoji"></span>
+              <h4>Profesionales</h4>
+              <p>Personas que deben procesar grandes volúmenes de información en su trabajo diario.</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3">
+            <div class="audience-card">
+              <span class="ac-emoji"></span>
+              <h4>Adultos</h4>
+              <p>Cualquier persona que quiera desarrollar el hábito de la lectura y aprovecharlo mejor.</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3">
+            <div class="audience-card">
+              <span class="ac-emoji"></span>
+              <h4>Autodidactas</h4>
+              <p>Personas que aprenden por su cuenta y quieren sacar el máximo provecho de cada texto.</p>
             </div>
           </div>
         </div>
@@ -205,45 +227,55 @@
     <!-- Modelo de negocio -->
     <section class="rf-section" id="business">
       <div class="container">
-        <div class="text-center mb-5">
-          <p class="section-kicker">Modelo de negocio</p>
-          <h2 class="section-title">¿Cómo generaría ingresos ReadFlow?</h2>
-          <p class="section-lead mx-auto">La estrategia de monetización se basa en un modelo freemium que permite atraer usuarios sin costo y convertirlos en clientes de pago.</p>
+        <div class="section-label">03 — Modelo de negocio</div>
+        <div class="row mb-5">
+          <div class="col-lg-6">
+            <h2 class="section-h2">¿Cómo genera<br><span class="text-accent">ingresos?</span></h2>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center">
+            <p class="section-p">Estrategia freemium: atraer usuarios sin costo y convertirlos en clientes de pago conforme necesiten más funcionalidades.</p>
+          </div>
         </div>
-        <div class="row g-4 justify-content-center">
+        <div class="row g-3">
           <div class="col-md-4">
-            <div class="business-card h-100">
-              <div class="biz-tag">Gratuito</div>
-              <h3>Plan Free</h3>
-              <p>Acceso limitado para atraer usuarios. Ideal para conocer la plataforma sin compromiso económico.</p>
-              <ul class="biz-list">
-                <li><i class="bi bi-check2"></i> 5 textos por mes</li>
-                <li><i class="bi bi-check2"></i> Estadísticas básicas</li>
-                <li><i class="bi bi-check2"></i> Retroalimentación general</li>
+            <div class="plan-card">
+              <div class="plan-header">
+                <span class="plan-tag">Gratuito</span>
+                <h3>Plan Free</h3>
+              </div>
+              <p>Acceso limitado para conocer la plataforma sin compromiso económico.</p>
+              <ul class="plan-list">
+                <li><i class="bi bi-check-lg"></i> 5 textos por mes</li>
+                <li><i class="bi bi-check-lg"></i> Estadísticas básicas</li>
+                <li><i class="bi bi-check-lg"></i> Retroalimentación general</li>
               </ul>
             </div>
           </div>
           <div class="col-md-4">
-            <div class="business-card business-card--featured h-100">
-              <div class="biz-tag biz-tag--accent">Principal</div>
-              <h3>Plan Premium</h3>
-              <p>Suscripción mensual con acceso completo. Principal fuente de ingresos de la plataforma.</p>
-              <ul class="biz-list">
-                <li><i class="bi bi-check2"></i> Textos ilimitados</li>
-                <li><i class="bi bi-check2"></i> Estadísticas avanzadas</li>
-                <li><i class="bi bi-check2"></i> Seguimiento de progreso</li>
+            <div class="plan-card plan-card--featured">
+              <div class="plan-header">
+                <span class="plan-tag plan-tag--accent">Principal</span>
+                <h3>Plan Premium</h3>
+              </div>
+              <p>Suscripción mensual con acceso completo. Principal fuente de ingresos.</p>
+              <ul class="plan-list">
+                <li><i class="bi bi-check-lg"></i> Textos ilimitados</li>
+                <li><i class="bi bi-check-lg"></i> Estadísticas avanzadas</li>
+                <li><i class="bi bi-check-lg"></i> Seguimiento de progreso</li>
               </ul>
             </div>
           </div>
           <div class="col-md-4">
-            <div class="business-card h-100">
-              <div class="biz-tag">Institucional</div>
-              <h3>Plan Educativo</h3>
-              <p>Licencias para colegios y universidades con herramientas para docentes y grupos de estudiantes.</p>
-              <ul class="biz-list">
-                <li><i class="bi bi-check2"></i> Panel de docentes</li>
-                <li><i class="bi bi-check2"></i> Reportes grupales</li>
-                <li><i class="bi bi-check2"></i> Textos personalizados</li>
+            <div class="plan-card">
+              <div class="plan-header">
+                <span class="plan-tag">Institucional</span>
+                <h3>Plan Educativo</h3>
+              </div>
+              <p>Licencias para instituciones con herramientas para docentes y grupos.</p>
+              <ul class="plan-list">
+                <li><i class="bi bi-check-lg"></i> Panel de docentes</li>
+                <li><i class="bi bi-check-lg"></i> Reportes grupales</li>
+                <li><i class="bi bi-check-lg"></i> Textos personalizados</li>
               </ul>
             </div>
           </div>
@@ -252,108 +284,109 @@
     </section>
 
     <!-- Finalidad -->
-    <section class="rf-section-dark" id="purpose">
+    <section class="rf-section rf-section--alt" id="purpose">
       <div class="container">
-        <div class="row align-items-center g-5">
-          <div class="col-lg-5">
-            <p class="section-kicker section-kicker--light">Finalidad del proyecto</p>
-            <h2 class="section-title section-title--light">¿Por qué existe ReadFlow?</h2>
-            <p class="section-lead section-lead--light">
-              La lectura es una de las habilidades más importantes pero menos entrenadas. La mayoría de las personas leen sin medir su comprensión ni su velocidad, y sin recibir retroalimentación que les ayude a mejorar.
-            </p>
-            <p class="section-lead section-lead--light mt-3">
-              ReadFlow nace para resolver ese problema: ofrecer una herramienta accesible, sin instalaciones y completamente desde el navegador, que permita a cualquier persona mejorar su lectura de forma medible y progresiva.
-            </p>
+        <div class="section-label">04 — Finalidad</div>
+        <div class="row mb-5">
+          <div class="col-lg-6">
+            <h2 class="section-h2">¿Por qué existe<br><span class="text-accent">ReadFlow?</span></h2>
           </div>
-          <div class="col-lg-7">
-            <div class="steps-list">
-              <div class="step-item">
-                <div class="step-num">1</div>
-                <div>
-                  <h3>Hacer la lectura medible</h3>
-                  <p>La mayoría lee sin saber qué tan rápido lo hace ni cuánto comprende. ReadFlow convierte eso en datos concretos y útiles.</p>
-                </div>
-              </div>
-              <div class="step-item">
-                <div class="step-num">2</div>
-                <div>
-                  <h3>Democratizar el acceso</h3>
-                  <p>No requiere software, instalaciones ni equipos especiales. Funciona desde cualquier navegador en cualquier dispositivo.</p>
-                </div>
-              </div>
-              <div class="step-item">
-                <div class="step-num">3</div>
-                <div>
-                  <h3>Generar hábitos de lectura</h3>
-                  <p>A través de sesiones cortas, textos variados y retroalimentación constante, ReadFlow fomenta el hábito lector de forma natural.</p>
-                </div>
-              </div>
+          <div class="col-lg-6 d-flex align-items-center">
+            <p class="section-p">La lectura es una de las habilidades más importantes pero menos entrenadas. La mayoría lee sin medir su comprensión ni recibir retroalimentación que ayude a mejorar.</p>
+          </div>
+        </div>
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="purpose-card">
+              <div class="purpose-num">01</div>
+              <h3>Hacer la lectura medible</h3>
+              <p>La mayoría lee sin saber qué tan rápido lo hace ni cuánto comprende. ReadFlow convierte eso en datos concretos y útiles para mejorar.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="purpose-card">
+              <div class="purpose-num">02</div>
+              <h3>Democratizar el acceso</h3>
+              <p>No requiere software ni instalaciones especiales. Funciona desde cualquier navegador en cualquier dispositivo, gratis desde el primer día.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="purpose-card">
+              <div class="purpose-num">03</div>
+              <h3>Generar hábitos lectores</h3>
+              <p>A través de sesiones cortas, textos variados y retroalimentación constante, ReadFlow fomenta el hábito lector de forma natural y progresiva.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Visión Futura -->
     <section class="rf-section" id="future">
       <div class="container">
-        <div class="text-center mb-5">
-          <p class="section-kicker">Visión a futuro</p>
-          <h2 class="section-title">¿Qué haríamos con más recursos?</h2>
-          <p class="section-lead mx-auto">Soy un estudiante de 18 años con recursos limitados. Esto es lo que podría hacer con el proyecto si lograra financiamiento o generar ingresos reales.</p>
+        <div class="section-label">05 — Visión a futuro</div>
+        <div class="row mb-5">
+          <div class="col-lg-6">
+            <h2 class="section-h2">¿Qué haríamos<br><span class="text-accent">con capital?</span></h2>
+          </div>
+          <div class="col-lg-6 d-flex align-items-center">
+            <p class="section-p">ReadFlow nació de una necesidad real siendo estudiante universitario de 18 años sin recursos suficientes. Pero la idea es grande, y esto es lo que construiríamos con inversión.</p>
+          </div>
         </div>
-        <div class="row g-4">
+        <div class="row g-3">
           <div class="col-md-6 col-lg-4">
-            <div class="future-card h-100">
+            <div class="future-card">
               <span class="future-tag">Datos globales</span>
               <h3>Análisis de datos a escala</h3>
-              <p>Con miles de usuarios activos, ReadFlow podría generar datos anónimos sobre hábitos de lectura a nivel global: qué temas se comprenden menos, en qué regiones se lee más lento y cómo evoluciona la comprensión con el tiempo.</p>
+              <p>Con miles de usuarios activos, generar datos anónimos sobre hábitos de lectura globales: qué temas se comprenden menos y cómo evoluciona la comprensión con el tiempo.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
-            <div class="future-card h-100">
-              <span class="future-tag">Hosting y dominio</span>
-              <h3>Lanzar la plataforma en línea</h3>
-              <p>Actualmente el proyecto corre en local. Con ingresos mínimos podría pagar hosting y un dominio propio para que cualquier persona acceda a ReadFlow desde cualquier parte del mundo.</p>
+            <div class="future-card">
+              <span class="future-tag">App móvil</span>
+              <h3>ReadFlow en tu bolsillo</h3>
+              <p>App nativa para iOS y Android con modo sin conexión para practicar en el bus, en el trabajo o donde sea, sincronizada automáticamente.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
-            <div class="future-card h-100">
-              <span class="future-tag">Contenido</span>
-              <h3>Banco de textos real</h3>
-              <p>Contratar a redactores o acuerdos con autores para construir una biblioteca de textos variados, organizados por nivel, tema y edad, que haga la plataforma genuinamente útil.</p>
+            <div class="future-card">
+              <span class="future-tag">Escala global</span>
+              <h3>Venderlo a empresas</h3>
+              <p>Ofrecer ReadFlow como herramienta de capacitación a empresas que necesiten que sus empleados procesen información más rápido y con mayor comprensión.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
-            <div class="future-card h-100">
-              <span class="future-tag">Equipo</span>
-              <h3>Sumar a otro desarrollador</h3>
-              <p>El proyecto fue construido solo. Con algo de capital, podría incorporar a otro estudiante o desarrollador junior para avanzar más rápido y agregar funcionalidades que actualmente no tengo tiempo de implementar.</p>
+            <div class="future-card">
+              <span class="future-tag">Impacto social</span>
+              <h3>Versión gratuita masiva</h3>
+              <p>Con ingresos suficientes, mantener una versión completamente gratuita y sin límites para personas en países donde el acceso a educación de calidad es limitado.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
-            <div class="future-card h-100">
-              <span class="future-tag">Mejora técnica</span>
-              <h3>Sistema de progreso real</h3>
-              <p>Con más tiempo y recursos, implementar un sistema que guarde el historial de cada usuario, muestre estadísticas de mejora a lo largo del tiempo y genere reportes descargables.</p>
+            <div class="future-card">
+              <span class="future-tag">Gamificación</span>
+              <h3>Retos y competencias</h3>
+              <p>Torneos de lectura rápida, desafíos semanales y rankings globales que conviertan mejorar la lectura en algo tan adictivo como un videojuego.</p>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
-            <div class="future-card h-100">
-              <span class="future-tag">Largo plazo</span>
-              <h3>Vender o escalar el proyecto</h3>
-              <p>Si ReadFlow llegara a tener usuarios activos y tracción real, la meta sería o bien escalar el negocio de forma independiente, o presentar el proyecto a una incubadora o fondo de inversión educativa en Centroamérica.</p>
+            <div class="future-card">
+              <span class="future-tag">Infraestructura</span>
+              <h3>API para developers</h3>
+              <p>Una API pública que permita a cualquier desarrollador integrar el motor de ReadFlow en sus propios productos educativos o de productividad.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ── CTA ── -->
     <section class="cta-section">
-      <div class="cta-glow"></div>
       <div class="container text-center position-relative">
-        <p class="section-kicker section-kicker--light">Proyecto universitario · UFM · 2026</p>
-        <h2 class="cta-title">ReadFlow demuestra que una plataforma web puede transformar la forma en que leemos.</h2>
-        <a href="#" class="btn-cta mt-4">Volver al inicio <i class="bi bi-arrow-up ms-2"></i></a>
+        <div class="cta-line">05 — Cierre</div>
+        <h2 class="cta-h2">ReadFlow demuestra que una plataforma web puede <span class="text-accent">transformar</span> la forma en que leemos.</h2>
+        <p class="cta-p">Proyecto universitario · Diego Andrés Escobedo Morán · UFM 2026</p>
+        <a href="#home" class="btn-main mt-4">Volver al inicio <i class="bi bi-arrow-up ms-2"></i></a>
       </div>
     </section>
 
@@ -364,15 +397,16 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-6">
-          <div class="d-flex align-items-center gap-2 mb-1">
-            <span class="brand-mark brand-mark--sm">R</span>
-            <span class="footer-brand-name">ReadFlow</span>
+          <div class="d-flex align-items-center gap-3">
+            <div class="brand-logo brand-logo--sm"><span>RF</span></div>
+            <div>
+              <p class="footer-name mb-0">ReadFlow</p>
+              <p class="footer-sub mb-0">Plataforma de comprensión lectora</p>
+            </div>
           </div>
-          <p class="footer-sub mb-0">Plataforma web de comprensión y velocidad lectora</p>
         </div>
         <div class="col-md-6 text-md-end mt-3 mt-md-0">
-          <p class="footer-credit mb-1">Desarrollado por <strong>Diego Andrés Escobedo Morán</strong></p>
-          <p class="footer-year mb-0">Proyecto universitario · UFM · 2026</p>
+          <p class="footer-credit mb-0">Diego Andrés Escobedo Morán · UFM · 2026</p>
         </div>
       </div>
     </div>

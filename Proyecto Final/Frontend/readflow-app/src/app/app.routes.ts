@@ -7,7 +7,7 @@ import { PerfilComponent } from './pages/perfil/perfil';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'textos', component: TextosComponent },
-  { path: 'leer/:id', component: LeerComponent },
+  { path: 'leer', component: LeerComponent },
   { path: 'perfil', component: PerfilComponent },
   { path: '**', redirectTo: '' }
 ];

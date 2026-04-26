@@ -1,1 +1,237 @@
-<p>home works!</p>
+<div class="rf-app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar d-none d-lg-flex flex-column">
+    <div class="d-flex align-items-center gap-2 mb-4 px-2">
+      <span class="logo-pill">RF</span>
+      <span class="logo-text">ReadFlow</span>
+    </div>
+
+    <nav class="d-flex flex-column gap-1 flex-grow-1">
+      <a routerLink="/" class="sidebar-link active">
+        <i class="bi bi-house-fill"></i> Inicio
+      </a>
+      <a routerLink="/textos" class="sidebar-link">
+        <i class="bi bi-collection-fill"></i> Biblioteca
+      </a>
+      <a routerLink="/leer" class="sidebar-link">
+        <i class="bi bi-book-fill"></i> Leer
+      </a>
+      <a routerLink="/perfil" class="sidebar-link">
+        <i class="bi bi-person-fill"></i> Mi perfil
+      </a>
+    </nav>
+
+    <div class="user-chip mt-auto">
+      <div class="user-avatar">D</div>
+      <div>
+        <p class="user-name mb-0">Diego</p>
+        <p class="user-level mb-0">Lector intermedio</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="rf-main flex-grow-1">
+
+    <!-- NAVBAR MÓVIL -->
+    <nav class="navbar d-lg-none mobile-nav px-3 py-2">
+      <span class="d-flex align-items-center gap-2">
+        <span class="logo-pill">RF</span>
+        <span class="logo-text">ReadFlow</span>
+      </span>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+        <i class="bi bi-list text-white fs-4"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="mobileMenu">
+        <div class="d-flex flex-column gap-2 mt-3">
+          <a routerLink="/" class="sidebar-link active"><i class="bi bi-house-fill"></i> Inicio</a>
+          <a routerLink="/textos" class="sidebar-link"><i class="bi bi-collection-fill"></i> Biblioteca</a>
+          <a routerLink="/leer" class="sidebar-link"><i class="bi bi-book-fill"></i> Leer</a>
+          <a routerLink="/perfil" class="sidebar-link"><i class="bi bi-person-fill"></i> Mi perfil</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="p-3 p-lg-4">
+
+      <!-- SALUDO -->
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+        <div>
+          <h1 class="greeting-title mb-1">Hola, Diego</h1>
+          <p class="text-muted-rf mb-0">Continúa donde lo dejaste</p>
+        </div>
+        <div class="search-box">
+          <i class="bi bi-search"></i>
+          <input type="text" placeholder="Buscar textos..." />
+        </div>
+      </div>
+
+      <!-- FEATURED BANNER -->
+      <div class="featured-banner mb-4">
+        <div class="row align-items-center g-0 h-100">
+          <div class="col-lg-8 p-4">
+            <span class="banner-chip mb-3 d-inline-block">✦ Recomendado para ti</span>
+            <h2 class="banner-title mb-2">El poder de los hábitos</h2>
+            <p class="banner-desc mb-3">Aprende cómo los pequeños cambios generan grandes transformaciones en tu vida diaria.</p>
+            <div class="d-flex gap-3 text-muted-rf mb-3" style="font-size: 12px;">
+              <span><i class="bi bi-clock-fill me-1"></i>5 min</span>
+              <span><i class="bi bi-bar-chart-fill me-1"></i>Intermedio</span>
+            </div>
+            <div class="d-flex gap-2 flex-wrap">
+              <a routerLink="/leer" class="btn-play"><i class="bi bi-play-fill me-2"></i>Leer ahora</a>
+              <a routerLink="/textos" class="btn-more">Ver más</a>
+            </div>
+          </div>
+          <div class="col-lg-4 d-none d-lg-flex justify-content-center align-items-center">
+            <div class="banner-book"><i class="bi bi-book-fill"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STATS ROW -->
+      <div class="row g-3 mb-4">
+        <div class="col-6 col-lg-3">
+          <div class="stat-card text-center p-3">
+            <i class="bi bi-lightning-fill stat-icon mb-2" style="color:#a78bfa"></i>
+            <h4 class="stat-val mb-0">+40%</h4>
+            <small class="text-muted-rf">Velocidad</small>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="stat-card text-center p-3">
+            <i class="bi bi-brain stat-icon mb-2" style="color:#60a5fa"></i>
+            <h4 class="stat-val mb-0">+35%</h4>
+            <small class="text-muted-rf">Comprensión</small>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="stat-card text-center p-3">
+            <i class="bi bi-book-fill stat-icon mb-2" style="color:#34d399"></i>
+            <h4 class="stat-val mb-0">0</h4>
+            <small class="text-muted-rf">Textos leídos</small>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="stat-card text-center p-3">
+            <i class="bi bi-trophy-fill stat-icon mb-2" style="color:#fbbf24"></i>
+            <h4 class="stat-val mb-0">0</h4>
+            <small class="text-muted-rf">Puntos</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- TEXTOS CAROUSEL -->
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="section-title mb-0">Textos destacados</h3>
+        <a routerLink="/textos" class="section-link">Ver todos <i class="bi bi-arrow-right"></i></a>
+      </div>
+
+      <div id="textosCarousel" class="carousel slide mb-4 position-relative" data-bs-ride="false">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row g-3">
+              <div class="col-12 col-md-6 col-lg-3" *ngFor="let texto of textos">
+                <div class="txt-card h-100">
+                  <div class="txt-cover" [style.background]="texto.color">
+                    <i class="bi bi-book-fill"></i>
+                  </div>
+                  <div class="p-3">
+                    <span class="txt-badge mb-2 d-inline-block">{{ texto.badge }}</span>
+                    <h6 class="txt-title mb-1">{{ texto.titulo }}</h6>
+                    <p class="txt-desc mb-2">{{ texto.desc }}</p>
+                    <div class="d-flex gap-2 mb-3" style="font-size:11px; color: rgba(255,255,255,0.35)">
+                      <span><i class="bi bi-clock me-1"></i>{{ texto.tiempo }}</span>
+                      <span><i class="bi bi-signal me-1"></i>{{ texto.nivel }}</span>
+                    </div>
+                    <a routerLink="/leer" class="btn-read w-100">Leer ahora</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row g-3">
+              <div class="col-12 col-md-6 col-lg-3" *ngFor="let texto of textos2">
+                <div class="txt-card h-100">
+                  <div class="txt-cover" [style.background]="texto.color">
+                    <i class="bi bi-book-fill"></i>
+                  </div>
+                  <div class="p-3">
+                    <span class="txt-badge mb-2 d-inline-block">{{ texto.badge }}</span>
+                    <h6 class="txt-title mb-1">{{ texto.titulo }}</h6>
+                    <p class="txt-desc mb-2">{{ texto.desc }}</p>
+                    <div class="d-flex gap-2 mb-3" style="font-size:11px; color: rgba(255,255,255,0.35)">
+                      <span><i class="bi bi-clock me-1"></i>{{ texto.tiempo }}</span>
+                      <span><i class="bi bi-signal me-1"></i>{{ texto.nivel }}</span>
+                    </div>
+                    <a routerLink="/leer" class="btn-read w-100">Leer ahora</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev carousel-arrow" type="button" data-bs-target="#textosCarousel" data-bs-slide="prev">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <button class="carousel-control-next carousel-arrow" type="button" data-bs-target="#textosCarousel" data-bs-slide="next">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- CONSEJOS CAROUSEL -->
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="section-title mb-0">Consejos de lectura</h3>
+      </div>
+
+      <div id="tipsCarousel" class="carousel slide mb-4 position-relative" data-bs-ride="carousel" data-bs-interval="4000">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="tip-slide">
+              <div class="tip-icon-box"><i class="bi bi-eye-fill"></i></div>
+              <div>
+                <h6 class="mb-1">Lee en bloques</h6>
+                <p class="mb-0 text-muted-rf">Entrena tu ojo a leer grupos de 3-4 palabras a la vez para aumentar tu velocidad significativamente.</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="tip-slide">
+              <div class="tip-icon-box"><i class="bi bi-volume-mute-fill"></i></div>
+              <div>
+                <h6 class="mb-1">Evita subvocalizar</h6>
+                <p class="mb-0 text-muted-rf">No leas en voz alta mentalmente. Procesar texto visualmente puede duplicar tu velocidad de lectura.</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="tip-slide">
+              <div class="tip-icon-box"><i class="bi bi-moon-stars-fill"></i></div>
+              <div>
+                <h6 class="mb-1">Ambiente tranquilo</h6>
+                <p class="mb-0 text-muted-rf">Un ambiente sin distracciones aumenta tu comprensión lectora hasta en un 30%.</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="tip-slide">
+              <div class="tip-icon-box"><i class="bi bi-calendar-check-fill"></i></div>
+              <div>
+                <h6 class="mb-1">15 minutos diarios</h6>
+                <p class="mb-0 text-muted-rf">La constancia supera a la intensidad. Leer 15 minutos al día equivale a más de 10 libros al año.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev carousel-arrow" type="button" data-bs-target="#tipsCarousel" data-bs-slide="prev">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <button class="carousel-control-next carousel-arrow" type="button" data-bs-target="#tipsCarousel" data-bs-slide="next">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+
+    </div>
+  </main>
+</div>

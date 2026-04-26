@@ -1,1 +1,99 @@
-<p>textos works!</p>
+<div class="rf-app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar d-none d-lg-flex flex-column">
+    <div class="d-flex align-items-center gap-2 mb-4 px-2">
+      <span class="logo-pill">RF</span>
+      <span class="logo-text">ReadFlow</span>
+    </div>
+    <nav class="d-flex flex-column gap-1 flex-grow-1">
+      <a routerLink="/" class="sidebar-link">
+        <i class="bi bi-house-fill"></i> Inicio
+      </a>
+      <a routerLink="/textos" class="sidebar-link active">
+        <i class="bi bi-collection-fill"></i> Biblioteca
+      </a>
+      <a routerLink="/leer" class="sidebar-link">
+        <i class="bi bi-book-fill"></i> Leer
+      </a>
+      <a routerLink="/perfil" class="sidebar-link">
+        <i class="bi bi-person-fill"></i> Mi perfil
+      </a>
+    </nav>
+    <div class="user-chip mt-auto">
+      <div class="user-avatar">D</div>
+      <div>
+        <p class="user-name mb-0">Diego</p>
+        <p class="user-level mb-0">Lector intermedio</p>
+      </div>
+    </div>
+  </aside>
+
+  <main class="rf-main flex-grow-1">
+
+    <nav class="navbar d-lg-none mobile-nav px-3 py-2">
+      <span class="d-flex align-items-center gap-2">
+        <span class="logo-pill">RF</span>
+        <span class="logo-text">ReadFlow</span>
+      </span>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+        <i class="bi bi-list text-white fs-4"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="mobileMenu">
+        <div class="d-flex flex-column gap-2 mt-3">
+          <a routerLink="/" class="sidebar-link"><i class="bi bi-house-fill"></i> Inicio</a>
+          <a routerLink="/textos" class="sidebar-link active"><i class="bi bi-collection-fill"></i> Biblioteca</a>
+          <a routerLink="/leer" class="sidebar-link"><i class="bi bi-book-fill"></i> Leer</a>
+          <a routerLink="/perfil" class="sidebar-link"><i class="bi bi-person-fill"></i> Mi perfil</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="p-3 p-lg-4">
+
+      <!-- Header -->
+      <div class="mb-4">
+        <h1 class="page-title mb-1">Biblioteca</h1>
+        <p class="text-muted-rf mb-0">Explora todos los textos disponibles</p>
+      </div>
+
+      <!-- Filtros -->
+      <div class="d-flex gap-2 flex-wrap mb-4">
+        <button class="filter-btn active" (click)="filtrar('todos')">Todos</button>
+        <button class="filter-btn" (click)="filtrar('basico')">Básico</button>
+        <button class="filter-btn" (click)="filtrar('intermedio')">Intermedio</button>
+        <button class="filter-btn" (click)="filtrar('avanzado')">Avanzado</button>
+      </div>
+
+      <!-- Grid de textos -->
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4" *ngFor="let texto of textosFiltrados">
+          <div class="txt-card h-100">
+            <div class="txt-cover" [style.background]="texto.color">
+              <i class="bi bi-book-fill"></i>
+            </div>
+            <div class="p-3">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <span class="txt-badge">{{ texto.badge }}</span>
+                <span class="nivel-badge nivel-{{ texto.nivel.toLowerCase() }}">{{ texto.nivel }}</span>
+              </div>
+              <h6 class="txt-title mb-1">{{ texto.titulo }}</h6>
+              <p class="txt-desc mb-3">{{ texto.desc }}</p>
+              <div class="d-flex gap-2 mb-3" style="font-size:11px; color: rgba(255,255,255,0.35)">
+                <span><i class="bi bi-clock me-1"></i>{{ texto.tiempo }}</span>
+                <span><i class="bi bi-signal me-1"></i>{{ texto.nivel }}</span>
+              </div>
+              <a routerLink="/leer" class="btn-read w-100">Leer ahora</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="empty-state" *ngIf="textosFiltrados.length === 0">
+        <i class="bi bi-search"></i>
+        <p>No hay textos en este nivel todavía.</p>
+      </div>
+
+    </div>
+  </main>
+</div>

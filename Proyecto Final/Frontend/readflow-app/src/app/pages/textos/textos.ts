@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { NivelColorPipe } from '../../pipes/nivel-color-pipe';
 
 @Component({
   selector: 'app-textos',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, NivelColorPipe],
   templateUrl: './textos.html',
   styleUrl: './textos.css'
 })

@@ -400,9 +400,7 @@ body {
 
 .tech-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
 
-/* ══════════════════════════════
-   AUDIENCE CARDS
-══════════════════════════════ */
+/* Audience cards */
 .audience-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -422,9 +420,7 @@ body {
 
 .audience-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
 
-/* ══════════════════════════════
-   PLAN CARDS
-══════════════════════════════ */
+/* Plan cards */
 .plan-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -477,9 +473,7 @@ body {
 .plan-list li:last-child { border-bottom: none; }
 .plan-list li i { color: var(--blue); font-size: 15px; }
 
-/* ══════════════════════════════
-   PURPOSE CARDS
-══════════════════════════════ */
+/* Purpose cards */
 .purpose-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -507,9 +501,7 @@ body {
 
 .purpose-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
 
-/* ══════════════════════════════
-   FUTURE CARDS
-══════════════════════════════ */
+/* Future cards */
 .future-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -547,9 +539,6 @@ body {
 
 .future-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
 
-/* ══════════════════════════════
-   CTA
-══════════════════════════════ */
 .cta-section {
   background: #05050f;
   padding: 7rem 0;
@@ -577,9 +566,7 @@ body {
   letter-spacing: 0.03em;
 }
 
-/* ══════════════════════════════
-   FOOTER
-══════════════════════════════ */
+/* Footer */
 .site-footer {
   background: #030303;
   border-top: 1px solid rgba(255,255,255,0.05);
@@ -597,9 +584,7 @@ body {
   font-size: 11px; color: rgba(255,255,255,0.3);
 }
 
-/* ══════════════════════════════
-   ANIMACIONES DE SCROLL
-══════════════════════════════ */
+/* Animaciones de Scroll */
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(28px);
@@ -611,9 +596,7 @@ body {
   transform: translateY(0);
 }
 
-/* ══════════════════════════════
-   RESPONSIVE
-══════════════════════════════ */
+/* Responsive */
 @media (max-width: 991px) {
   .navbar-collapse {
     background: rgba(8,8,8,0.98);

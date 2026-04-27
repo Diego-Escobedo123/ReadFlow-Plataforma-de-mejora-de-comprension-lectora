@@ -1,1 +1,149 @@
-<p>perfil works!</p>
+<div class="rf-app">
+
+  <aside class="sidebar d-none d-lg-flex flex-column">
+    <div class="d-flex align-items-center gap-2 mb-4 px-2">
+      <span class="logo-pill">RF</span>
+      <span class="logo-text">ReadFlow</span>
+    </div>
+    <nav class="d-flex flex-column gap-1 flex-grow-1">
+      <a routerLink="/" class="sidebar-link">
+        <i class="bi bi-house-fill"></i> Inicio
+      </a>
+      <a routerLink="/textos" class="sidebar-link">
+        <i class="bi bi-collection-fill"></i> Biblioteca
+      </a>
+      <a routerLink="/leer" class="sidebar-link">
+        <i class="bi bi-book-fill"></i> Leer
+      </a>
+      <a routerLink="/perfil" class="sidebar-link active">
+        <i class="bi bi-person-fill"></i> Mi perfil
+      </a>
+    </nav>
+    <div class="user-chip mt-auto">
+      <div class="user-avatar">D</div>
+      <div>
+        <p class="user-name mb-0">Diego</p>
+        <p class="user-level mb-0">Lector intermedio</p>
+      </div>
+    </div>
+  </aside>
+
+  <main class="rf-main flex-grow-1">
+
+    <nav class="navbar d-lg-none mobile-nav px-3 py-2">
+      <span class="d-flex align-items-center gap-2">
+        <span class="logo-pill">RF</span>
+        <span class="logo-text">ReadFlow</span>
+      </span>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+        <i class="bi bi-list text-white fs-4"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="mobileMenu">
+        <div class="d-flex flex-column gap-2 mt-3">
+          <a routerLink="/" class="sidebar-link"><i class="bi bi-house-fill"></i> Inicio</a>
+          <a routerLink="/textos" class="sidebar-link"><i class="bi bi-collection-fill"></i> Biblioteca</a>
+          <a routerLink="/leer" class="sidebar-link"><i class="bi bi-book-fill"></i> Leer</a>
+          <a routerLink="/perfil" class="sidebar-link active"><i class="bi bi-person-fill"></i> Mi perfil</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="p-3 p-lg-4">
+
+      <div class="perfil-header mb-4">
+        <div class="perfil-avatar">D</div>
+        <div>
+          <h1 class="page-title mb-1">Diego Andrés Escobedo</h1>
+          <p class="text-muted-rf mb-2">Lector intermedio · Miembro desde 2026</p>
+          <span class="nivel-chip">
+            <i class="bi bi-star-fill me-1"></i>Nivel Intermedio
+          </span>
+        </div>
+      </div>
+
+      <div class="row g-3 mb-4">
+        <div class="col-6 col-lg-3">
+          <div class="stat-card text-center p-3">
+            <i class="bi bi-book-fill stat-icon mb-2" style="color:#a78bfa"></i>
+            <h4 class="stat-val mb-0">{{ stats.textosLeidos }}</h4>
+            <small class="text-muted-rf">Textos leídos</small>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="stat-card text-center p-3">
+            <i class="bi bi-clock-fill stat-icon mb-2" style="color:#60a5fa"></i>
+            <h4 class="stat-val mb-0">{{ stats.minutosLeidos }}</h4>
+            <small class="text-muted-rf">Minutos leídos</small>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="stat-card text-center p-3">
+            <i class="bi bi-trophy-fill stat-icon mb-2" style="color:#fbbf24"></i>
+            <h4 class="stat-val mb-0">{{ stats.puntosTotal }}</h4>
+            <small class="text-muted-rf">Puntos totales</small>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="stat-card text-center p-3">
+            <i class="bi bi-lightning-fill stat-icon mb-2" style="color:#34d399"></i>
+            <h4 class="stat-val mb-0">{{ stats.racha }}</h4>
+            <small class="text-muted-rf">Días seguidos</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+
+        <div class="col-lg-7">
+          <div class="panel-card">
+            <h5 class="panel-card-title">Historial de lectura</h5>
+
+            <div class="historial-item" *ngFor="let item of historial">
+              <div class="historial-cover" [style.background]="item.color">
+                <i class="bi bi-book-fill"></i>
+              </div>
+              <div class="flex-grow-1">
+                <p class="historial-titulo">{{ item.titulo }}</p>
+                <p class="historial-meta">
+                  <span><i class="bi bi-clock me-1"></i>{{ item.tiempo }}</span>
+                  <span><i class="bi bi-calendar me-1"></i>{{ item.fecha }}</span>
+                </p>
+                <div class="historial-progress-wrap">
+                  <div class="historial-progress-bar" [style.width]="item.progreso + '%'"></div>
+                </div>
+              </div>
+              <span class="historial-pct">{{ item.progreso }}%</span>
+            </div>
+
+            <div class="empty-historial" *ngIf="historial.length === 0">
+              <i class="bi bi-journal-x"></i>
+              <p>Aún no has leído ningún texto.</p>
+              <a routerLink="/textos" class="btn-read d-inline-block px-4">Explorar textos</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="panel-card">
+            <h5 class="panel-card-title">Logros</h5>
+            <div class="row g-3">
+              <div class="col-6" *ngFor="let logro of logros">
+                <div class="logro-card" [class.logro-desbloqueado]="logro.desbloqueado">
+                  <p class="logro-nombre">{{ logro.nombre }}</p>
+                  <p class="logro-desc">{{ logro.desc }}</p>
+                  <span class="logro-status" *ngIf="!logro.desbloqueado">
+                    <i class="bi bi-lock-fill me-1"></i>Bloqueado
+                  </span>
+                  <span class="logro-status logro-status--ok" *ngIf="logro.desbloqueado">
+                    <i class="bi bi-check-circle-fill me-1"></i>Obtenido
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>

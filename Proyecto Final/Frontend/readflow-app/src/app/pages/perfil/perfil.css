@@ -1,0 +1,166 @@
+.perfil-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.perfil-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c3aed, #2979ff);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.nivel-chip {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(124,58,237,0.15);
+  border: 1px solid rgba(124,58,237,0.25);
+  color: #c4b5fd;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+
+.stat-card {
+  background: #1e1e2e;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.stat-card:hover { border-color: rgba(124,58,237,0.35); transform: translateY(-3px); }
+.stat-icon { font-size: 1.5rem; display: block; }
+.stat-val { font-size: 1.5rem; font-weight: 800; color: #fff; }
+
+.panel-card {
+  background: #1e1e2e;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 1.5rem;
+  height: 100%;
+}
+
+.panel-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.historial-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.historial-item:last-child { border-bottom: none; }
+
+.historial-cover {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  color: rgba(255,255,255,0.8);
+  flex-shrink: 0;
+}
+
+.historial-titulo {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.historial-meta {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  display: flex;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.historial-progress-wrap {
+  height: 3px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.historial-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #7c3aed, #2979ff);
+  border-radius: 10px;
+}
+
+.historial-pct {
+  font-size: 12px;
+  font-weight: 700;
+  color: #a78bfa;
+  white-space: nowrap;
+}
+
+.empty-historial {
+  text-align: center;
+  padding: 2rem 0;
+  color: rgba(255,255,255,0.3);
+}
+
+.empty-historial i { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+.empty-historial p { font-size: 14px; margin-bottom: 1rem; }
+
+.logro-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  opacity: 0.5;
+  transition: all 0.2s;
+}
+
+.logro-desbloqueado {
+  opacity: 1;
+  border-color: rgba(124,58,237,0.25);
+  background: rgba(124,58,237,0.08);
+}
+
+.logro-icon { font-size: 28px; margin-bottom: 0.5rem; }
+
+.logro-nombre {
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 3px;
+}
+
+.logro-desc {
+  font-size: 10px;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.logro-status {
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  font-weight: 600;
+}
+
+.logro-status--ok {
+  color: #34d399;
+}
+
+@media (max-width: 768px) {
+  .perfil-avatar { width: 60px; height: 60px; font-size: 24px; }
+}

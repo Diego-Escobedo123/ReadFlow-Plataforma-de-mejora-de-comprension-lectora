@@ -5,7 +5,6 @@
   color: #fff;
 }
 
-/* SIDEBAR */
 .sidebar {
   width: 220px;
   min-width: 220px;
@@ -100,10 +99,9 @@
 }
 .search-box input::placeholder { color: rgba(255,255,255,0.35); }
 
-/* FEATURED BANNER */
 .featured-banner {
-  background: linear-gradient(135deg, #1a0533 0%, #0d1b4a 100%);
-  border: 1px solid rgba(124,58,237,0.2);
+  background: linear-gradient(135deg, #0a2a6e 0%, #1a4a9f 100%);
+  border: 1px solid rgba(41,121,255,0.3);
   border-radius: 18px;
   overflow: hidden;
   min-height: 220px;
@@ -158,11 +156,10 @@
 .banner-book {
   width: 110px; height: 110px;
   border-radius: 50%;
-  background: rgba(124,58,237,0.15);
-  border: 2px solid rgba(124,58,237,0.3);
+  background: rgba(41,121,255,0.2);
+  border: 2px solid rgba(41,121,255,0.4);
   display: flex; align-items: center; justify-content: center;
   font-size: 46px;
-  animation: float 3s ease-in-out infinite;
 }
 
 @keyframes float {
@@ -170,15 +167,14 @@
   50% { transform: translateY(-10px); }
 }
 
-/* STAT CARDS */
 .stat-card {
-  background: #1a1a2e;
-  border: 1px solid rgba(255,255,255,0.07);
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  border: none;
   border-radius: 14px;
-  transition: border-color 0.2s, transform 0.2s;
+  transition: transform 0.2s;
 }
 
-.stat-card:hover { border-color: rgba(124,58,237,0.35); transform: translateY(-3px); }
+.stat-card:hover { transform: translateY(-3px); }
 .stat-icon { font-size: 1.5rem; display: block; }
 .stat-val { font-size: 1.5rem; font-weight: 800; color: #fff; }
 
@@ -189,7 +185,6 @@
 }
 .section-link:hover { color: #a78bfa; }
 
-/* TEXT CARDS */
 .txt-card {
   background: #1e1e2e;
   border: 1px solid rgba(255,255,255,0.07);

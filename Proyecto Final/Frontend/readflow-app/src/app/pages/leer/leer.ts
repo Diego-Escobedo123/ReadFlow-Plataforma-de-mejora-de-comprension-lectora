@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './leer.html',
   styleUrl: './leer.css'
 })
-export class LeerComponent implements OnInit, OnDestroy {
+export class LeerComponent {
 
   progreso = 0;
   terminado = false;
@@ -50,23 +50,6 @@ export class LeerComponent implements OnInit, OnDestroy {
     ]
   };
 
-  ngOnInit() {
-    this.respuestas = new Array(this.texto.preguntas.length).fill('');
-    this.timer = setInterval(() => {
-      this.segundos++;
-      const m = Math.floor(this.segundos / 60);
-      const s = (this.segundos % 60).toString().padStart(2, '0');
-      this.tiempoTranscurrido = `${m}:${s}`;
-      if (!this.terminado) {
-        this.progreso = Math.min(Math.floor(this.segundos / 1.8), 100);
-      }
-    }, 1000);
-  }
-
-  ngOnDestroy() {
-    clearInterval(this.timer);
-  }
-
   terminar() {
     this.terminado = true;
     this.progreso = 100;
@@ -88,20 +71,4 @@ export class LeerComponent implements OnInit, OnDestroy {
     this.resultados = true;
   }
 
-  reiniciar() {
-    this.terminado = false;
-    this.resultados = false;
-    this.respuestas = new Array(this.texto.preguntas.length).fill('');
-    this.puntaje = 0;
-    this.progreso = 0;
-    this.segundos = 0;
-    this.tiempoTranscurrido = '0:00';
-    this.timer = setInterval(() => {
-      this.segundos++;
-      const m = Math.floor(this.segundos / 60);
-      const s = (this.segundos % 60).toString().padStart(2, '0');
-      this.tiempoTranscurrido = `${m}:${s}`;
-      this.progreso = Math.min(Math.floor(this.segundos / 1.8), 100);
-    }, 1000);
-  }
 }

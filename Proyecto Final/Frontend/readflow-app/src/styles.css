@@ -19,7 +19,6 @@ html, body {
   overflow-x: hidden;
 }
 
-/* ── LAYOUT COMPARTIDO ── */
 .rf-app {
   display: flex;
   min-height: 100vh;
@@ -85,8 +84,8 @@ html, body {
   font-weight: 700; font-size: 13px;
 }
 
-.user-name { font-size: 13px; font-weight: 600; color: #fff; }
-.user-level { font-size: 11px; color: rgba(255,255,255,0.4); }
+.user-name { font-size: 13px; font-weight: 600; color: #ffffff !important; }
+.user-level { font-size: 11px; color: rgba(255,255,255,0.5) !important; }
 
 .mobile-nav {
   background: #0a0a0a;

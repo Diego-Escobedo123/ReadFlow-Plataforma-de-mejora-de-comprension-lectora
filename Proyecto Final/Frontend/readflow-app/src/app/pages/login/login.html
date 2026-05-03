@@ -1,0 +1,57 @@
+<div class="login-wrapper">
+
+  <div class="login-card">
+
+    <div class="login-header text-center mb-4">
+      <div class="d-flex align-items-center justify-content-center gap-2 mb-3">
+        <span class="logo-pill">RF</span>
+        <span class="logo-text">ReadFlow</span>
+      </div>
+      <h2 class="login-title">Bienvenido de vuelta</h2>
+      <p class="text-muted-rf">Inicia sesión para continuar</p>
+    </div>
+
+    <div class="alert alert-danger" *ngIf="error">
+      <i class="bi bi-exclamation-circle me-2"></i>{{ error }}
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label-rf">Correo electrónico</label>
+      <div class="input-group-rf">
+        <i class="bi bi-envelope"></i>
+        <input
+          type="email"
+          class="input-rf"
+          placeholder="correo@ejemplo.com"
+          [(ngModel)]="email"
+        />
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label-rf">Contraseña</label>
+      <div class="input-group-rf">
+        <i class="bi bi-lock"></i>
+        <input
+          type="password"
+          class="input-rf"
+          placeholder="••••••••"
+          [(ngModel)]="password"
+        />
+      </div>
+    </div>
+
+    <button class="btn-login w-100" (click)="login()" [disabled]="cargando">
+      <span *ngIf="!cargando">Iniciar sesión</span>
+      <span *ngIf="cargando">
+        <span class="spinner-border spinner-border-sm me-2"></span>Cargando...
+      </span>
+    </button>
+
+    <p class="text-center mt-3 text-muted-rf" style="font-size: 12px;">
+      Usuario de prueba: <strong style="color:#a78bfa">diego@readflow.com</strong> / <strong style="color:#a78bfa">readflow123</strong>
+    </p>
+
+  </div>
+
+</div>

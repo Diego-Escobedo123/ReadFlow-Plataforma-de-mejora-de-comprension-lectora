@@ -5,6 +5,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const textosRoutes = require('./routes/textos.routes');
+const preguntasRoutes = require('./routes/preguntas.routes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,6 +16,7 @@ app.use(express.json());
 
 // Rutas
 app.use('/api/textos', textosRoutes);
+app.use('/api/preguntas', preguntasRoutes);
 
 // Ruta base
 app.get('/', (req, res) => {

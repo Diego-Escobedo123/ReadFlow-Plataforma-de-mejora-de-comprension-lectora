@@ -115,3 +115,6 @@ html, body {
 
 .row { display: flex !important; flex-wrap: wrap !important; }
 .col-12 { display: block !important; }
+
+.col-lg-8 { display: block !important; }
+.col-lg-4 { display: block !important; }

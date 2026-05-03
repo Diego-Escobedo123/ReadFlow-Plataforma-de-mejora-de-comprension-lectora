@@ -219,3 +219,6 @@
   .reading-card { padding: 1.25rem; }
   .reading-content p { font-size: 15px; }
 }
+
+.row { display: flex !important; flex-wrap: wrap !important; }
+.col-lg-8 { display: block !important; }

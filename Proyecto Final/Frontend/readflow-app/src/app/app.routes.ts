@@ -9,7 +9,7 @@ import { RegistroComponent } from './pages/registro/registro';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'textos', component: TextosComponent },
-  { path: 'leer', component: LeerComponent },
+  { path: 'leer/:id', component: LeerComponent },
   { path: 'perfil', component: PerfilComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },

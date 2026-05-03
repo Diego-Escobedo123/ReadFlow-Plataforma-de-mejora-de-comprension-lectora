@@ -53,6 +53,10 @@ export class ReadingService {
     return this.http.get<Texto>(`${this.apiUrl}/textos/${id}`);
   }
 
+  getPreguntasPorTexto(textoId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/preguntas/texto/${textoId}`);
+  }
+
   getHistorial(): SesionLectura[] {
     return [
       { textoId: '1', titulo: 'El poder de los hábitos', fecha: '26 Apr 2026', progreso: 100, tiempo: '5 min', color: 'linear-gradient(135deg, #4f1580, #1a3a8f)' },

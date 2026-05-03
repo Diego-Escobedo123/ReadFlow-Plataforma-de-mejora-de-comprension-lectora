@@ -11,8 +11,9 @@
       <p class="text-muted-rf">Inicia sesión para continuar</p>
     </div>
 
-    <div class="alert alert-danger" *ngIf="error">
-      <i class="bi bi-exclamation-circle me-2"></i>{{ error }}
+    <div class="alert alert-danger d-flex align-items-center gap-2 mb-3" *ngIf="error">
+      <i class="bi bi-exclamation-triangle-fill"></i>
+      <span>{{ error }}</span>
     </div>
 
     <div class="mb-3">
@@ -49,6 +50,11 @@
     </button>
 
     <p class="text-center mt-3 text-muted-rf" style="font-size: 12px;">
+      ¿No tienes cuenta?
+      <a routerLink="/registro" style="color:#a78bfa; text-decoration:none; font-weight:600;">Regístrate aquí</a>
+    </p>
+
+    <p class="text-center mt-2 text-muted-rf" style="font-size: 12px;">
       Usuario de prueba: <strong style="color:#a78bfa">diego@readflow.com</strong> / <strong style="color:#a78bfa">readflow123</strong>
     </p>
 

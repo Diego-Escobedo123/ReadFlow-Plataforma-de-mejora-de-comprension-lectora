@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
@@ -17,7 +17,6 @@ export class LoginComponent {
   error = '';
   cargando = false;
 
-  // Credenciales simuladas
   private usuarios = [
     { email: 'diego@readflow.com', password: 'readflow123', nombre: 'Diego' }
   ];
@@ -26,6 +25,17 @@ export class LoginComponent {
 
   login() {
     this.error = '';
+
+    if (!this.email || !this.password) {
+      this.error = 'Por favor completa todos los campos.';
+      return;
+    }
+
+    if (!this.email.includes('@')) {
+      this.error = 'Ingresa un correo electrónico válido.';
+      return;
+    }
+
     this.cargando = true;
 
     setTimeout(() => {
@@ -34,7 +44,6 @@ export class LoginComponent {
       );
 
       if (usuario) {
-        // Guardar token simulado en localStorage
         const token = btoa(`${usuario.email}:${Date.now()}`);
         localStorage.setItem('token', token);
         localStorage.setItem('usuario', JSON.stringify(usuario));

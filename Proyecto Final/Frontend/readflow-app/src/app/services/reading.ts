@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap, of } from 'rxjs';
 
 export interface Texto {
   _id: string;
@@ -28,11 +28,25 @@ export interface SesionLectura {
 export class ReadingService {
 
   private apiUrl = 'http://localhost:3000/api';
+  private textosCache: Texto[] | null = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    const cached = sessionStorage.getItem('textos');
+    if (cached) {
+      this.textosCache = JSON.parse(cached);
+    }
+  }
 
   getTextos(): Observable<Texto[]> {
-    return this.http.get<Texto[]>(`${this.apiUrl}/textos`);
+    if (this.textosCache) {
+      return of(this.textosCache);
+    }
+    return this.http.get<Texto[]>(`${this.apiUrl}/textos`).pipe(
+      tap(data => {
+        this.textosCache = data;
+        sessionStorage.setItem('textos', JSON.stringify(data));
+      })
+    );
   }
 
   getTextoPorId(id: string): Observable<Texto> {

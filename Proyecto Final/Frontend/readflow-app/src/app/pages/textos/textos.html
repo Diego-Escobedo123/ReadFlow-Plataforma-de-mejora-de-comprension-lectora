@@ -23,8 +23,8 @@
     <div class="user-chip mt-auto">
       <div class="user-avatar">D</div>
       <div>
-        <p class="user-name mb-0">Diego</p>
-        <p class="user-level mb-0">Lector intermedio</p>
+        <p class="user-name mb-0" style="color:#ffffff !important">Diego</p>
+        <p class="user-level mb-0" style="color:rgba(255,255,255,0.6) !important">Lector intermedio</p>
       </div>
     </div>
   </aside>
@@ -59,11 +59,17 @@
 
       <!-- Filtros -->
       <div class="d-flex gap-2 flex-wrap mb-4">
-        <button class="filter-btn active" (click)="filtrar('todos')">Todos</button>
-        <button class="filter-btn" (click)="filtrar('basico')">Básico</button>
-        <button class="filter-btn" (click)="filtrar('intermedio')">Intermedio</button>
-        <button class="filter-btn" (click)="filtrar('avanzado')">Avanzado</button>
+        <button class="filter-btn" [class.active]="filtroActivo === 'todos'" (click)="filtrar('todos')">Todos</button>
+        <button class="filter-btn" [class.active]="filtroActivo === 'básico'" (click)="filtrar('básico')">Básico</button>
+        <button class="filter-btn" [class.active]="filtroActivo === 'intermedio'" (click)="filtrar('intermedio')">Intermedio</button>
+        <button class="filter-btn" [class.active]="filtroActivo === 'avanzado'" (click)="filtrar('avanzado')">Avanzado</button>
       </div>
+
+     <!-- Spinner -->
+    <div class="text-center py-5" *ngIf="cargando && textos.length === 0">
+      <div class="spinner-border" style="color:#7c3aed"></div>
+      <p class="text-muted-rf mt-3">Cargando textos...</p>
+    </div>
 
       <!-- Grid de textos -->
       <div class="row g-4">
@@ -83,13 +89,14 @@
                 <span><i class="bi bi-clock me-1"></i>{{ texto.tiempo }}</span>
                 <span><i class="bi bi-signal me-1"></i>{{ texto.nivel }}</span>
               </div>
-              <a routerLink="/leer" class="btn-read w-100">Leer ahora</a>
+              <a [routerLink]="['/leer', texto._id]" class="btn-read w-100">Leer ahora</a>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="empty-state" *ngIf="textosFiltrados.length === 0">
+      <!-- Empty state -->
+      <div class="empty-state" *ngIf="!cargando && textosFiltrados.length === 0">
         <i class="bi bi-search"></i>
         <p>No hay textos en este nivel todavía.</p>
       </div>

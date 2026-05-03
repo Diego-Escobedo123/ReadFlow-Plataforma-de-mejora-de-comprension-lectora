@@ -112,3 +112,6 @@ html, body {
 }
 
 .btn-read:hover { background: #7c3aed; color: #fff; }
+
+.row { display: flex !important; flex-wrap: wrap !important; }
+.col-12 { display: block !important; }

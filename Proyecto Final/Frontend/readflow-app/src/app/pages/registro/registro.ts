@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-registro',
@@ -20,7 +21,7 @@ export class RegistroComponent {
   exito = '';
   cargando = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private http: HttpClient) {}
 
   registrar() {
     this.error = '';
@@ -48,21 +49,20 @@ export class RegistroComponent {
 
     this.cargando = true;
 
-    setTimeout(() => {
-      const usuario = {
-        nombre: this.nombre,
-        email: this.email,
-        password: this.password
-      };
-
-      localStorage.setItem('usuario_registrado', JSON.stringify(usuario));
-      this.exito = '¡Cuenta creada exitosamente! Redirigiendo...';
-
-      setTimeout(() => {
-        this.router.navigate(['/login']);
-      }, 1500);
-
-      this.cargando = false;
-    }, 1000);
+    this.http.post<any>('http://localhost:3000/api/usuarios/registro', {
+      nombre: this.nombre,
+      email: this.email,
+      password: this.password
+    }).subscribe({
+      next: () => {
+        this.exito = '¡Cuenta creada exitosamente! Redirigiendo...';
+        setTimeout(() => this.router.navigate(['/login']), 1500);
+        this.cargando = false;
+      },
+      error: (err) => {
+        this.error = err.error?.message || 'Error al crear la cuenta.';
+        this.cargando = false;
+      }
+    });
   }
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -17,11 +18,7 @@ export class LoginComponent {
   error = '';
   cargando = false;
 
-  private usuarios = [
-    { email: 'diego@readflow.com', password: 'readflow123', nombre: 'Diego' }
-  ];
-
-  constructor(private router: Router) {}
+  constructor(private router: Router, private http: HttpClient) {}
 
   login() {
     this.error = '';
@@ -38,21 +35,20 @@ export class LoginComponent {
 
     this.cargando = true;
 
-    setTimeout(() => {
-      const usuario = this.usuarios.find(
-        u => u.email === this.email && u.password === this.password
-      );
-
-      if (usuario) {
-        const token = btoa(`${usuario.email}:${Date.now()}`);
-        localStorage.setItem('token', token);
-        localStorage.setItem('usuario', JSON.stringify(usuario));
+    this.http.post<any>('http://localhost:3000/api/usuarios/login', {
+      email: this.email,
+      password: this.password
+    }).subscribe({
+      next: (res) => {
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('usuario', JSON.stringify(res.usuario));
         this.router.navigate(['/']);
-      } else {
-        this.error = 'Correo o contraseña incorrectos.';
+        this.cargando = false;
+      },
+      error: (err) => {
+        this.error = err.error?.message || 'Correo o contraseña incorrectos.';
+        this.cargando = false;
       }
-
-      this.cargando = false;
-    }, 1000);
+    });
   }
 }

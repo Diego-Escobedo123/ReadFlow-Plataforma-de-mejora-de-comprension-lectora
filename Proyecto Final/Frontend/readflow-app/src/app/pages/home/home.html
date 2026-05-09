@@ -14,9 +14,6 @@
       <a routerLink="/textos" class="sidebar-link">
         <i class="bi bi-collection-fill"></i> Biblioteca
       </a>
-      <a routerLink="/leer" class="sidebar-link">
-        <i class="bi bi-book-fill"></i> Leer
-      </a>
       <a routerLink="/perfil" class="sidebar-link">
         <i class="bi bi-person-fill"></i> Mi perfil
       </a>
@@ -46,7 +43,6 @@
         <div class="d-flex flex-column gap-2 mt-3">
           <a routerLink="/" class="sidebar-link active"><i class="bi bi-house-fill"></i> Inicio</a>
           <a routerLink="/textos" class="sidebar-link"><i class="bi bi-collection-fill"></i> Biblioteca</a>
-          <a routerLink="/leer" class="sidebar-link"><i class="bi bi-book-fill"></i> Leer</a>
           <a routerLink="/perfil" class="sidebar-link"><i class="bi bi-person-fill"></i> Mi perfil</a>
         </div>
       </div>
@@ -60,9 +56,33 @@
           <h1 class="greeting-title mb-1">Hola, Diego</h1>
           <p class="text-muted-rf mb-0">Continúa donde lo dejaste</p>
         </div>
-        <div class="search-box">
-          <i class="bi bi-search"></i>
-          <input type="text" placeholder="Buscar textos..." />
+        <div class="search-container">
+          <div class="search-box">
+            <i class="bi bi-search"></i>
+            <input
+              type="text"
+              placeholder="Buscar textos..."
+              [(ngModel)]="busqueda"
+              (input)="buscar()"
+            />
+            <button *ngIf="busqueda" class="search-clear" (click)="cerrarResultados()">
+              <i class="bi bi-x"></i>
+            </button>
+          </div>
+          <div class="search-results" *ngIf="mostrarResultados">
+            <div *ngIf="resultados.length === 0" class="search-empty">
+              No se encontraron textos
+            </div>
+            <div class="search-result-item" *ngFor="let r of resultados" (click)="irALeer(r._id)">
+              <div class="search-result-cover" [style.background]="r.color">
+                <i class="bi bi-book-fill"></i>
+              </div>
+              <div>
+                <p class="search-result-title">{{ r.titulo }}</p>
+                <p class="search-result-meta">{{ r.nivel }} · {{ r.tiempo }}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -78,7 +98,7 @@
               <span><i class="bi bi-bar-chart-fill me-1"></i>Intermedio</span>
             </div>
             <div class="d-flex gap-2 flex-wrap">
-              <a routerLink="/leer" class="btn-play"><i class="bi bi-play-fill me-2"></i>Leer ahora</a>
+              <a routerLink="/leer/69f62ef66d7b42c5f95c6ad4" class="btn-play"><i class="bi bi-play-fill me-2"></i>Leer ahora</a>
               <a routerLink="/textos" class="btn-more">Ver más</a>
             </div>
           </div>
@@ -143,7 +163,7 @@
                       <span><i class="bi bi-clock me-1"></i>{{ texto.tiempo }}</span>
                       <span><i class="bi bi-signal me-1"></i>{{ texto.nivel }}</span>
                     </div>
-                    <a routerLink="/leer" class="btn-read w-100">Leer ahora</a>
+                    <a routerLink="/textos" class="btn-read w-100">Leer ahora</a>
                   </div>
                 </div>
               </div>
@@ -164,7 +184,7 @@
                       <span><i class="bi bi-clock me-1"></i>{{ texto.tiempo }}</span>
                       <span><i class="bi bi-signal me-1"></i>{{ texto.nivel }}</span>
                     </div>
-                    <a routerLink="/leer" class="btn-read w-100">Leer ahora</a>
+                    <a routerLink="/textos" class="btn-read w-100">Leer ahora</a>
                   </div>
                 </div>
               </div>

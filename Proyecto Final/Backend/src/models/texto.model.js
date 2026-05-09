@@ -22,7 +22,7 @@ const textoSchema = new mongoose.Schema({
   },
   badge: {
     type: String,
-    default: '📖 Texto'
+    default: 'Texto'
   },
   color: {
     type: String,

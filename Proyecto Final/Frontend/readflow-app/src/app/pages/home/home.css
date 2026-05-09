@@ -365,6 +365,18 @@
 
 .tip-slide h6 { font-size: 15px; font-weight: 700; color: #fff; }
 
+.logout-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.logout-btn:hover { color: #f87171; }
+
 /* RESPONSIVE */
 @media (max-width: 992px) {
   .carousel-control-prev { left: 0 !important; }

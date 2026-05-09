@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit {
   busqueda = '';
   resultados: Texto[] = [];
   mostrarResultados = false;
+  nombreUsuario = 'Usuario';
+  inicialesUsuario = 'U';
 
   textos = [
     { titulo: 'El poder de los hábitos', desc: 'Cómo los pequeños cambios generan grandes transformaciones.', badge: 'Recomendado', tiempo: '5 min', nivel: 'Intermedio', color: 'linear-gradient(135deg, #4f1580, #1a3a8f)' },
@@ -35,9 +37,21 @@ export class HomeComponent implements OnInit {
   constructor(
     private readingService: ReadingService,
     private router: Router
-  ) {}
+  ) {
+    const usuarioGuardado = localStorage.getItem('usuario');
+    if (usuarioGuardado) {
+      const u = JSON.parse(usuarioGuardado);
+      this.nombreUsuario = u.nombre || 'Usuario';
+      this.inicialesUsuario = this.nombreUsuario.charAt(0).toUpperCase();
+    }
+  }
 
   ngOnInit() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      this.router.navigate(['/login']);
+      return;
+    }
     this.readingService.getTextos().subscribe({
       next: (data) => {
         this.resultados = data;
@@ -71,5 +85,11 @@ export class HomeComponent implements OnInit {
   cerrarResultados() {
     this.mostrarResultados = false;
     this.busqueda = '';
+  }
+
+  cerrarSesion() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
+    this.router.navigate(['/login']);
   }
 }

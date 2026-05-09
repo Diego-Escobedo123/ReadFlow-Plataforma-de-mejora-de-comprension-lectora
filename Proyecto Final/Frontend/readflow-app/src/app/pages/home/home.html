@@ -20,11 +20,14 @@
     </nav>
 
     <div class="user-chip mt-auto">
-      <div class="user-avatar">D</div>
-      <div>
-        <p class="user-name mb-0">Diego</p>
-        <p class="user-level mb-0">Lector intermedio</p>
+      <div class="user-avatar">{{ inicialesUsuario }}</div>
+      <div class="flex-grow-1">
+        <p class="user-name mb-0" style="color:#ffffff !important">{{ nombreUsuario }}</p>
+        <p class="user-level mb-0" style="color:rgba(255,255,255,0.6) !important">Lector básico</p>
       </div>
+      <button class="logout-btn" (click)="cerrarSesion()" title="Cerrar sesión">
+        <i class="bi bi-box-arrow-right"></i>
+      </button>
     </div>
   </aside>
 
@@ -44,6 +47,9 @@
           <a routerLink="/" class="sidebar-link active"><i class="bi bi-house-fill"></i> Inicio</a>
           <a routerLink="/textos" class="sidebar-link"><i class="bi bi-collection-fill"></i> Biblioteca</a>
           <a routerLink="/perfil" class="sidebar-link"><i class="bi bi-person-fill"></i> Mi perfil</a>
+          <button class="sidebar-link border-0 bg-transparent text-start" (click)="cerrarSesion()">
+            <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+          </button>
         </div>
       </div>
     </nav>
@@ -53,7 +59,7 @@
       <!-- Saludo -->
       <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
         <div>
-          <h1 class="greeting-title mb-1">Hola, Diego</h1>
+          <h1 class="greeting-title mb-1">Hola, {{ nombreUsuario }}</h1>
           <p class="text-muted-rf mb-0">Continúa donde lo dejaste</p>
         </div>
         <div class="search-container">
@@ -98,7 +104,7 @@
               <span><i class="bi bi-bar-chart-fill me-1"></i>Intermedio</span>
             </div>
             <div class="d-flex gap-2 flex-wrap">
-              <a routerLink="/leer/69f62ef66d7b42c5f95c6ad4" class="btn-play"><i class="bi bi-play-fill me-2"></i>Leer ahora</a>
+              <a routerLink="/leer/69fbb3f82323f75c74c1cf0d" class="btn-play"><i class="bi bi-play-fill me-2"></i>Leer ahora</a>
               <a routerLink="/textos" class="btn-more">Ver más</a>
             </div>
           </div>

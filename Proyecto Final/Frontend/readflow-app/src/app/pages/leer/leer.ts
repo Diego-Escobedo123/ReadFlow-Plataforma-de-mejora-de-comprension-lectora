@@ -58,17 +58,18 @@ export class LeerComponent implements OnInit, OnDestroy {
     });
   }
 
-  iniciarTimer() {
-    this.timer = setInterval(() => {
-      this.segundos++;
-      const m = Math.floor(this.segundos / 60);
-      const s = (this.segundos % 60).toString().padStart(2, '0');
-      this.tiempoTranscurrido = `${m}:${s}`;
-      if (!this.terminado) {
-        this.progreso = Math.min(Math.floor(this.segundos / 1.8), 100);
-      }
-    }, 1000);
-  }
+ iniciarTimer() {
+  this.timer = setInterval(() => {
+    this.segundos++;
+    const m = Math.floor(this.segundos / 60);
+    const s = (this.segundos % 60).toString().padStart(2, '0');
+    this.tiempoTranscurrido = `${m}:${s}`;
+    if (!this.terminado) {
+      this.progreso = Math.min(Math.floor(this.segundos / 1.8), 100);
+    }
+    this.cdr.detectChanges();
+  }, 1000);
+}
 
   ngOnDestroy() {
     clearInterval(this.timer);

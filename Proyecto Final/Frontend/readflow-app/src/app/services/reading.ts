@@ -27,7 +27,7 @@ export interface SesionLectura {
 })
 export class ReadingService {
 
-  private apiUrl = 'http://localhost:3000/api';
+  private apiUrl = 'https://readflow-plataforma-de-mejora-de.onrender.com/api';
   private textosCache: Texto[] | null = null;
 
   constructor(private http: HttpClient) {

@@ -49,7 +49,7 @@ export class RegistroComponent {
 
     this.cargando = true;
 
-    this.http.post<any>('http://localhost:3000/api/usuarios/registro', {
+    this.http.post<any>('https://readflow-plataforma-de-mejora-de.onrender.com/api/usuarios/registro', {
       nombre: this.nombre,
       email: this.email,
       password: this.password

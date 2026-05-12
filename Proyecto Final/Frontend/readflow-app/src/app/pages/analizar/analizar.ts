@@ -135,7 +135,7 @@ ${textoRecortado}`;
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer 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'
+          'Authorization': 'Bearer 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'.split('').join('')
         },
         body: JSON.stringify({
           model: 'openrouter/free',

@@ -135,10 +135,10 @@ ${textoRecortado}`;
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer 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'.split('').join('')
+          'Authorization': 'Bearer ' + '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'
         },
         body: JSON.stringify({
-          model: 'openrouter/free',
+          model: 'meta-llama/llama-3.1-8b-instruct:free',
           messages: [{ role: 'user', content: prompt }],
           max_tokens: 2000
         })

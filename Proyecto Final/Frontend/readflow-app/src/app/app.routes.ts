@@ -9,12 +9,12 @@ import { AnalizarComponent } from './pages/analizar/analizar';
 import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [authGuard] },
-  { path: 'textos', component: TextosComponent, canActivate: [authGuard] },
+  { path: '', component: HomeComponent },
+  { path: 'textos', component: TextosComponent },
   { path: 'leer/:id', component: LeerComponent, canActivate: [authGuard] },
   { path: 'perfil', component: PerfilComponent, canActivate: [authGuard] },
+  { path: 'analizar', component: AnalizarComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
-  { path: 'analizar', component: AnalizarComponent, canActivate: [authGuard] },
-  { path: '**', redirectTo: '/login' }
+  { path: '**', redirectTo: '' }
 ];

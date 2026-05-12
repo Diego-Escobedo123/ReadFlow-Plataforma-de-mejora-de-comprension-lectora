@@ -12,16 +12,22 @@
       <a routerLink="/textos" class="sidebar-link">
         <i class="bi bi-collection-fill"></i> Biblioteca
       </a>
+      <a routerLink="/analizar" class="sidebar-link">
+        <i class="bi bi-file-earmark-text-fill"></i> Analizar
+    </a>
       <a routerLink="/perfil" class="sidebar-link active">
         <i class="bi bi-person-fill"></i> Mi perfil
       </a>
     </nav>
     <div class="user-chip mt-auto">
-      <div class="user-avatar">D</div>
-      <div>
-        <p class="user-name mb-0">Diego</p>
-        <p class="user-level mb-0">Lector intermedio</p>
+      <div class="user-avatar">{{ inicialesUsuario }}</div>
+      <div class="flex-grow-1">
+        <p class="user-name mb-0" style="color:#ffffff !important">{{ nombreUsuario }}</p>
+        <p class="user-level mb-0" style="color:rgba(255,255,255,0.6) !important">Lector básico</p>
       </div>
+      <button class="logout-btn" (click)="cerrarSesion()" title="Cerrar sesión">
+        <i class="bi bi-box-arrow-right"></i>
+      </button>
     </div>
   </aside>
 
@@ -39,8 +45,10 @@
         <div class="d-flex flex-column gap-2 mt-3">
           <a routerLink="/" class="sidebar-link"><i class="bi bi-house-fill"></i> Inicio</a>
           <a routerLink="/textos" class="sidebar-link"><i class="bi bi-collection-fill"></i> Biblioteca</a>
-          <a routerLink="/leer" class="sidebar-link"><i class="bi bi-book-fill"></i> Leer</a>
           <a routerLink="/perfil" class="sidebar-link active"><i class="bi bi-person-fill"></i> Mi perfil</a>
+          <button class="sidebar-link border-0 bg-transparent text-start" (click)="cerrarSesion()">
+            <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+          </button>
         </div>
       </div>
     </nav>
@@ -48,12 +56,12 @@
     <div class="p-3 p-lg-4">
 
       <div class="perfil-header mb-4">
-        <div class="perfil-avatar">D</div>
+        <div class="perfil-avatar">{{ inicialesUsuario }}</div>
         <div>
-          <h1 class="page-title mb-1">Diego Andrés Escobedo</h1>
-          <p class="text-muted-rf mb-2">Lector intermedio · Miembro desde 2026</p>
+          <h1 class="page-title mb-1">{{ nombreUsuario }}</h1>
+          <p class="text-muted-rf mb-2">Lector básico · Miembro desde 2026</p>
           <span class="nivel-chip">
-            <i class="bi bi-star-fill me-1"></i>Nivel Intermedio
+            <i class="bi bi-star-fill me-1"></i>Nivel Básico
           </span>
         </div>
       </div>

@@ -1,0 +1,158 @@
+<div class="rf-app">
+
+  <aside class="sidebar d-none d-lg-flex flex-column">
+    <div class="d-flex align-items-center gap-2 mb-4 px-2">
+      <span class="logo-pill">RF</span>
+      <span class="logo-text">ReadFlow</span>
+    </div>
+    <nav class="d-flex flex-column gap-1 flex-grow-1">
+      <a routerLink="/" class="sidebar-link">
+        <i class="bi bi-house-fill"></i> Inicio
+      </a>
+      <a routerLink="/textos" class="sidebar-link">
+        <i class="bi bi-collection-fill"></i> Biblioteca
+      </a>
+      <a routerLink="/analizar" class="sidebar-link active">
+        <i class="bi bi-file-earmark-text-fill"></i> Analizar
+      </a>
+      <a routerLink="/perfil" class="sidebar-link">
+        <i class="bi bi-person-fill"></i> Mi perfil
+      </a>
+    </nav>
+    <div class="user-chip mt-auto">
+      <div class="user-avatar">{{ inicialesUsuario }}</div>
+      <div class="flex-grow-1">
+        <p class="user-name mb-0" style="color:#ffffff !important">{{ nombreUsuario }}</p>
+        <p class="user-level mb-0" style="color:rgba(255,255,255,0.6) !important">Lector básico</p>
+      </div>
+      <button class="logout-btn" (click)="cerrarSesion()" title="Cerrar sesión">
+        <i class="bi bi-box-arrow-right"></i>
+      </button>
+    </div>
+  </aside>
+
+  <main class="rf-main flex-grow-1">
+
+    <nav class="navbar d-lg-none mobile-nav px-3 py-2">
+      <span class="d-flex align-items-center gap-2">
+        <span class="logo-pill">RF</span>
+        <span class="logo-text">ReadFlow</span>
+      </span>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+        <i class="bi bi-list text-white fs-4"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="mobileMenu">
+        <div class="d-flex flex-column gap-2 mt-3">
+          <a routerLink="/" class="sidebar-link"><i class="bi bi-house-fill"></i> Inicio</a>
+          <a routerLink="/textos" class="sidebar-link"><i class="bi bi-collection-fill"></i> Biblioteca</a>
+          <a routerLink="/analizar" class="sidebar-link active"><i class="bi bi-file-earmark-text-fill"></i> Analizar</a>
+          <a routerLink="/perfil" class="sidebar-link"><i class="bi bi-person-fill"></i> Mi perfil</a>
+          <button class="sidebar-link border-0 bg-transparent text-start" (click)="cerrarSesion()">
+            <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="p-3 p-lg-4">
+
+      <div class="mb-4">
+        <h1 class="page-title mb-1">Analizar documento</h1>
+        <p class="text-muted-rf mb-0">Sube un PDF o Word y obtén un resumen detallado con puntos clave</p>
+      </div>
+
+      <!-- ZONA DE CARGA -->
+      <div
+        class="drop-zone"
+        [class.drag-over]="arrastrandoSobre"
+        *ngIf="estado === 'idle'"
+        (dragover)="onDragOver($event)"
+        (dragleave)="onDragLeave()"
+        (drop)="onDrop($event)"
+        (click)="fileInput.click()">
+        <input #fileInput type="file" accept=".pdf,.docx,.doc" hidden (change)="onFileSelected($event)" />
+        <i class="bi bi-cloud-upload-fill drop-icon"></i>
+        <h4 class="drop-title">Arrastra tu archivo aquí</h4>
+        <p class="drop-subtitle">o haz clic para seleccionar</p>
+        <div class="drop-formats">
+          <span class="format-badge"><i class="bi bi-file-earmark-pdf me-1"></i>PDF</span>
+          <span class="format-badge"><i class="bi bi-file-earmark-word me-1"></i>Word</span>
+        </div>
+      </div>
+
+      <!-- LEYENDO -->
+      <div class="estado-card text-center" *ngIf="estado === 'leyendo'">
+        <div class="spinner-border mb-3" style="color:#7c3aed"></div>
+        <h5>Leyendo {{ nombreArchivo }}...</h5>
+        <p class="text-muted-rf">Extrayendo el texto del documento</p>
+      </div>
+
+      <!-- ANALIZANDO -->
+      <div class="estado-card text-center" *ngIf="estado === 'analizando'">
+        <div class="analizando-icon mb-3">
+          <i class="bi bi-cpu-fill"></i>
+        </div>
+        <h5>Analizando con IA...</h5>
+        <p class="text-muted-rf">Generando resumen y puntos clave del documento</p>
+        <div class="progress-bar-wrap mt-3">
+          <div class="progress-bar-fill"></div>
+        </div>
+      </div>
+
+      <!-- ERROR -->
+      <div class="estado-card text-center" *ngIf="estado === 'error'">
+        <i class="bi bi-exclamation-circle-fill error-icon mb-3"></i>
+        <h5>Ocurrió un error</h5>
+        <p class="text-muted-rf">No se pudo analizar el documento. Intenta de nuevo.</p>
+        <button class="btn-reiniciar mt-3" (click)="reiniciar()">Intentar de nuevo</button>
+      </div>
+
+      <!-- RESULTADO -->
+      <div *ngIf="estado === 'listo'">
+
+        <div class="archivo-info mb-4">
+          <i class="bi bi-file-earmark-check-fill archivo-icon"></i>
+          <div>
+            <p class="archivo-nombre mb-0">{{ nombreArchivo }}</p>
+            <p class="text-muted-rf mb-0" style="font-size:12px">Análisis completado</p>
+          </div>
+          <button class="btn-nuevo ms-auto" (click)="reiniciar()">
+            <i class="bi bi-plus-lg me-1"></i>Nuevo archivo
+          </button>
+        </div>
+
+        <div class="row g-4">
+
+          <!-- RESUMEN -->
+          <div class="col-12">
+            <div class="resultado-card">
+              <div class="resultado-card-header">
+                <i class="bi bi-file-text-fill"></i>
+                <h5 class="mb-0">Resumen del documento</h5>
+              </div>
+              <p class="resumen-texto">{{ resumen }}</p>
+            </div>
+          </div>
+
+          <!-- PUNTOS CLAVE -->
+          <div class="col-12">
+            <div class="resultado-card">
+              <div class="resultado-card-header">
+                <i class="bi bi-lightning-fill"></i>
+                <h5 class="mb-0">Puntos clave</h5>
+              </div>
+              <ul class="puntos-lista">
+                <li *ngFor="let punto of puntosClave" class="punto-item">
+                  <i class="bi bi-check-circle-fill punto-icon"></i>
+                  <span>{{ punto }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>

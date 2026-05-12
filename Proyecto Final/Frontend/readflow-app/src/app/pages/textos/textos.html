@@ -13,16 +13,22 @@
       <a routerLink="/textos" class="sidebar-link active">
         <i class="bi bi-collection-fill"></i> Biblioteca
       </a>
+      <a routerLink="/analizar" class="sidebar-link">
+        <i class="bi bi-file-earmark-text-fill"></i> Analizar
+     </a>
       <a routerLink="/perfil" class="sidebar-link">
         <i class="bi bi-person-fill"></i> Mi perfil
       </a>
     </nav>
     <div class="user-chip mt-auto">
-      <div class="user-avatar">D</div>
-      <div>
-        <p class="user-name mb-0" style="color:#ffffff !important">Diego</p>
-        <p class="user-level mb-0" style="color:rgba(255,255,255,0.6) !important">Lector intermedio</p>
+      <div class="user-avatar">{{ inicialesUsuario }}</div>
+      <div class="flex-grow-1">
+        <p class="user-name mb-0" style="color:#ffffff !important">{{ nombreUsuario }}</p>
+        <p class="user-level mb-0" style="color:rgba(255,255,255,0.6) !important">Lector básico</p>
       </div>
+      <button class="logout-btn" (click)="cerrarSesion()" title="Cerrar sesión">
+        <i class="bi bi-box-arrow-right"></i>
+      </button>
     </div>
   </aside>
 
@@ -40,8 +46,10 @@
         <div class="d-flex flex-column gap-2 mt-3">
           <a routerLink="/" class="sidebar-link"><i class="bi bi-house-fill"></i> Inicio</a>
           <a routerLink="/textos" class="sidebar-link active"><i class="bi bi-collection-fill"></i> Biblioteca</a>
-          <a routerLink="/leer" class="sidebar-link"><i class="bi bi-book-fill"></i> Leer</a>
           <a routerLink="/perfil" class="sidebar-link"><i class="bi bi-person-fill"></i> Mi perfil</a>
+          <button class="sidebar-link border-0 bg-transparent text-start" (click)="cerrarSesion()">
+            <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+          </button>
         </div>
       </div>
     </nav>
@@ -62,11 +70,11 @@
         <button class="filter-btn" [class.active]="filtroActivo === 'avanzado'" (click)="filtrar('avanzado')">Avanzado</button>
       </div>
 
-     <!-- Spinner -->
-    <div class="text-center py-5" *ngIf="cargando && textos.length === 0">
-      <div class="spinner-border" style="color:#7c3aed"></div>
-      <p class="text-muted-rf mt-3">Cargando textos...</p>
-    </div>
+      <!-- Spinner -->
+      <div class="text-center py-5" *ngIf="cargando && textos.length === 0">
+        <div class="spinner-border" style="color:#7c3aed"></div>
+        <p class="text-muted-rf mt-3">Cargando textos...</p>
+      </div>
 
       <!-- Grid de textos -->
       <div class="row g-4">

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ReadingService } from '../../services/reading';
 
@@ -12,6 +12,8 @@ import { ReadingService } from '../../services/reading';
 })
 export class PerfilComponent implements OnInit {
 
+  nombreUsuario = 'Usuario';
+  inicialesUsuario = 'U';
   stats: any;
   historial: any[] = [];
 
@@ -24,10 +26,26 @@ export class PerfilComponent implements OnInit {
     { nombre: 'Constante', desc: '30 días seguidos', desbloqueado: false }
   ];
 
-  constructor(private readingService: ReadingService) {}
+  constructor(
+    private readingService: ReadingService,
+    private router: Router
+  ) {
+    const usuarioGuardado = localStorage.getItem('usuario');
+    if (usuarioGuardado) {
+      const u = JSON.parse(usuarioGuardado);
+      this.nombreUsuario = u.nombre || 'Usuario';
+      this.inicialesUsuario = this.nombreUsuario.charAt(0).toUpperCase();
+    }
+  }
 
   ngOnInit() {
     this.stats = this.readingService.getStats();
     this.historial = this.readingService.getHistorial();
+  }
+
+  cerrarSesion() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
+    this.router.navigate(['/login']);
   }
 }

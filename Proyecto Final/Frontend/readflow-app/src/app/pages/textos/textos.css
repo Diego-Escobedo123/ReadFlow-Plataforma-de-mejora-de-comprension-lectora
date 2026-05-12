@@ -162,3 +162,15 @@
 
 .row { display: flex !important; flex-wrap: wrap !important; }
 .col-12 { display: block !important; }
+
+.logout-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.logout-btn:hover { color: #f87171; }

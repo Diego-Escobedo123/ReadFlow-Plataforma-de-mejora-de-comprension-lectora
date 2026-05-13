@@ -71,7 +71,7 @@ export class AnalizarComponent {
 
     try {
       this.textoExtraido = await this.leerPDF(file);
-      await this.analizarConIA();
+      await this.analizarTexto();
     } catch (err) {
       console.error(err);
       this.estado = 'error';
@@ -96,60 +96,45 @@ export class AnalizarComponent {
     return texto;
   }
 
-  async analizarConIA() {
+  async analizarTexto() {
     this.estado = 'analizando';
     this.cdr.detectChanges();
 
-    const textoRecortado = this.textoExtraido.slice(0, 4000);
-
-    const prompt = `Eres un asistente académico experto. Analiza el siguiente texto en detalle y responde ÚNICAMENTE con un JSON válido con esta estructura exacta, sin texto adicional antes o después:
-{
-  "resumen": "Escribe un resumen completo y detallado del texto en al menos 5 párrafos bien desarrollados.",
-  "puntosClave": [
-    "Punto clave 1 explicado con detalle",
-    "Punto clave 2 explicado con detalle",
-    "Punto clave 3 explicado con detalle",
-    "Punto clave 4 explicado con detalle",
-    "Punto clave 5 explicado con detalle",
-    "Punto clave 6 explicado con detalle",
-    "Punto clave 7 explicado con detalle"
-  ]
-}
-
-TEXTO A ANALIZAR:
-${textoRecortado}`;
+    await new Promise(resolve => setTimeout(resolve, 1000));
 
     try {
-      const apiKey = 'AIzaSyAQG-E91a9BAF5' + 'nA6MCoIrR586NjrUjmUg';
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent?key=${apiKey}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }]
-          })
-        }
-      );
+      const oraciones = this.textoExtraido
+        .replace(/\n+/g, ' ')
+        .split(/[.!?]+/)
+        .map(s => s.trim())
+        .filter(s => s.length > 40);
 
-      const data = await response.json();
-      const texto = data.candidates?.[0]?.content?.parts?.[0]?.text;
+      // Generar resumen con las primeras oraciones significativas
+      const primerasOraciones = oraciones.slice(0, 8);
+      this.resumen = primerasOraciones.join('. ') + '.';
 
-      if (!texto) {
-        this.estado = 'error';
-        this.cdr.detectChanges();
-        return;
+      // Generar puntos clave distribuidos del documento
+      const total = oraciones.length;
+      const indices = [
+        Math.floor(total * 0.05),
+        Math.floor(total * 0.15),
+        Math.floor(total * 0.25),
+        Math.floor(total * 0.40),
+        Math.floor(total * 0.55),
+        Math.floor(total * 0.70),
+        Math.floor(total * 0.85),
+      ];
+
+      this.puntosClave = indices
+        .map(i => oraciones[i])
+        .filter(s => s && s.length > 30)
+        .slice(0, 7);
+
+      if (this.puntosClave.length < 3) {
+        this.puntosClave = oraciones.slice(0, 7);
       }
 
-      const jsonMatch = texto.match(/\{[\s\S]*\}/);
-      if (jsonMatch) {
-        const resultado = JSON.parse(jsonMatch[0]);
-        this.resumen = resultado.resumen;
-        this.puntosClave = resultado.puntosClave || [];
-        this.estado = 'listo';
-      } else {
-        this.estado = 'error';
-      }
+      this.estado = 'listo';
     } catch (err) {
       console.error(err);
       this.estado = 'error';

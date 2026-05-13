@@ -1,22 +1,50 @@
-# ReadFlow — Landing Page
+# ReadFlow — Plataforma de Mejora de Comprensión Lectora
+Descripción
+ReadFlow es una plataforma web diseñada para mejorar la comprensión lectora de sus usuarios. Permite leer textos con temporizador, responder cuestionarios de comprensión, analizar documentos PDF y llevar un seguimiento del progreso personal.
 
-Landing page del proyecto ReadFlow, una plataforma web para mejorar la comprensión lectora y la velocidad de lectura.
+URLs:
+Frontend (Vercel): https://read-flow-plataforma-de-mejora-de-c.vercel.app
+Backend (Render): https://readflow-plataforma-de-mejora-de.onrender.com
+Repositorio: https://github.com/Diego-Escobedo123/ReadFlow-Plataforma-de-mejora-de-comprension-lectora
 
-Esta página funciona como presentación del proyecto, explicando qué es ReadFlow, las tecnologías que se utilizaron, el público objetivo, el modelo de negocio, la finalidad del proyecto y la visión a futuro.
+Tecnologías utilizadas:
+Frontend
 
-## Tecnologías utilizadas
-
-- HTML5
-- CSS3
-- JavaScript
+Angular
+- TypeScript
 - Bootstrap 5
-- Bootstrap Icons
+- pdfjs-dist (lectura de PDFs)
 
-## Cómo abrir la landing page
+Backend
 
-No requiere instalación. Solo descarga los archivos y abre `index.html` en cualquier navegador moderno.
+- Node.js + Express
+- MongoDB Atlas
+- Mongoose
 
-## Interacciones
+Funcionalidades principales
 
-- **Modo claro/oscuro** — Botón en el navbar que cambia el tema de toda la página.
-- **Animaciones de scroll** — Los elementos aparecen con transición suave al entrar en pantalla.
+Login y Registro — Autenticación de usuarios conectada a MongoDB
+Biblioteca de textos — Grid de textos con filtros por nivel (Básico, Intermedio, Avanzado)
+Sesión de lectura — Timer en tiempo real, barra de progreso y quiz de comprensión con puntaje
+Analizar documento — Sube un PDF y obtén un resumen automático con puntos clave
+Perfil — Estadísticas personales, historial de lecturas y logros
+
+Estructura del proyecto
+ReadFlow/
+├── index.html / style.css / script.js  ← Landing page
+├── README.md
+└── Proyecto Final/
+    ├── Frontend/readflow-app/           ← Angular 19
+    └── Backend/                         ← Node.js + Express
+Instalación y ejecución local
+Backend
+bashcd "Proyecto Final/Backend"
+npm install
+node src/index.js
+Frontend
+bashcd "Proyecto Final/Frontend/readflow-app"
+npm install
+ng serve
+Variables de entorno del Backend
+PORT=3000
+MONGODB_URI=mongodb+srv://readflow:readflow123@cluster0.ekvvhzz.mongodb.net/readflow?appName=Cluster0

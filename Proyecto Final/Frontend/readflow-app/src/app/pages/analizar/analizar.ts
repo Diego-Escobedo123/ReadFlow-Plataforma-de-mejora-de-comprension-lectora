@@ -127,7 +127,7 @@ ${textoRecortado}`;
           'Authorization': 'Bearer ' + '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'
         },
         body: JSON.stringify({
-          model: 'google/gemma-3-4b-it:free',
+          model: 'nvidia/nemotron-super-49b-v1:free',
           messages: [{ role: 'user', content: prompt }],
           max_tokens: 2000
         })

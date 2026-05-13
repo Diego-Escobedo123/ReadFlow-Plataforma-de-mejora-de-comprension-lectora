@@ -4,7 +4,9 @@ ReadFlow es una plataforma web diseñada para mejorar la comprensión lectora de
 
 URLs:
 Frontend (Vercel): https://read-flow-plataforma-de-mejora-de-c.vercel.app
+
 Backend (Render): https://readflow-plataforma-de-mejora-de.onrender.com
+
 Repositorio: https://github.com/Diego-Escobedo123/ReadFlow-Plataforma-de-mejora-de-comprension-lectora
 
 Tecnologías utilizadas:
@@ -29,13 +31,6 @@ Sesión de lectura — Timer en tiempo real, barra de progreso y quiz de compren
 Analizar documento — Sube un PDF y obtén un resumen automático con puntos clave
 Perfil — Estadísticas personales, historial de lecturas y logros
 
-Estructura del proyecto
-ReadFlow/
-├── index.html / style.css / script.js  ← Landing page
-├── README.md
-└── Proyecto Final/
-    ├── Frontend/readflow-app/           ← Angular 19
-    └── Backend/                         ← Node.js + Express
 Instalación y ejecución local
 Backend
 bashcd "Proyecto Final/Backend"

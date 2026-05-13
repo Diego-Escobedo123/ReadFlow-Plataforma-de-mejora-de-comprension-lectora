@@ -58,8 +58,8 @@ export class AnalizarComponent {
 
   async procesarArchivo(file: File) {
     const extension = file.name.split('.').pop()?.toLowerCase();
-    if (!['pdf', 'docx', 'doc'].includes(extension || '')) {
-      alert('Solo se permiten archivos PDF o Word (.docx)');
+    if (extension !== 'pdf') {
+      alert('Solo se permiten archivos PDF');
       return;
     }
 
@@ -70,11 +70,7 @@ export class AnalizarComponent {
     this.cdr.detectChanges();
 
     try {
-      if (extension === 'pdf') {
-        this.textoExtraido = await this.leerPDF(file);
-      } else {
-        this.textoExtraido = await this.leerWord(file);
-      }
+      this.textoExtraido = await this.leerPDF(file);
       await this.analizarConIA();
     } catch (err) {
       console.error(err);
@@ -98,13 +94,6 @@ export class AnalizarComponent {
     }
 
     return texto;
-  }
-
-  async leerWord(file: File): Promise<string> {
-    const mammoth = await import('mammoth');
-    const arrayBuffer = await file.arrayBuffer();
-    const result = await mammoth.extractRawText({ arrayBuffer });
-    return result.value;
   }
 
   async analizarConIA() {
@@ -138,7 +127,7 @@ ${textoRecortado}`;
           'Authorization': 'Bearer ' + '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'
         },
         body: JSON.stringify({
-          model: 'meta-llama/llama-3.1-8b-instruct:free',
+          model: 'google/gemma-3-4b-it:free',
           messages: [{ role: 'user', content: prompt }],
           max_tokens: 2000
         })

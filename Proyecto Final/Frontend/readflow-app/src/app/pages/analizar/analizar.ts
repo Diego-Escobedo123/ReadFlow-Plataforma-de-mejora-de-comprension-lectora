@@ -104,15 +104,15 @@ export class AnalizarComponent {
 
     const prompt = `Eres un asistente académico experto. Analiza el siguiente texto en detalle y responde ÚNICAMENTE con un JSON válido con esta estructura exacta, sin texto adicional antes o después:
 {
-  "resumen": "Escribe un resumen completo y detallado del texto en al menos 5 párrafos bien desarrollados. Explica los conceptos principales, el contexto, las ideas centrales y las conclusiones del documento.",
+  "resumen": "Escribe un resumen completo y detallado del texto en al menos 5 párrafos bien desarrollados.",
   "puntosClave": [
-    "Punto clave 1 explicado con detalle suficiente para entenderlo",
-    "Punto clave 2 explicado con detalle suficiente para entenderlo",
-    "Punto clave 3 explicado con detalle suficiente para entenderlo",
-    "Punto clave 4 explicado con detalle suficiente para entenderlo",
-    "Punto clave 5 explicado con detalle suficiente para entenderlo",
-    "Punto clave 6 explicado con detalle suficiente para entenderlo",
-    "Punto clave 7 explicado con detalle suficiente para entenderlo"
+    "Punto clave 1 explicado con detalle",
+    "Punto clave 2 explicado con detalle",
+    "Punto clave 3 explicado con detalle",
+    "Punto clave 4 explicado con detalle",
+    "Punto clave 5 explicado con detalle",
+    "Punto clave 6 explicado con detalle",
+    "Punto clave 7 explicado con detalle"
   ]
 }
 
@@ -120,21 +120,20 @@ TEXTO A ANALIZAR:
 ${textoRecortado}`;
 
     try {
-      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + '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'
-        },
-        body: JSON.stringify({
-          model: 'nvidia/nemotron-super-49b-v1:free',
-          messages: [{ role: 'user', content: prompt }],
-          max_tokens: 2000
-        })
-      });
+      const apiKey = 'AIzaSyAQG-E91a9BAF5' + 'nA6MCoIrR586NjrUjmUg';
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:generateContent?key=${apiKey}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }]
+          })
+        }
+      );
 
       const data = await response.json();
-      const texto = data.choices?.[0]?.message?.content;
+      const texto = data.candidates?.[0]?.content?.parts?.[0]?.text;
 
       if (!texto) {
         this.estado = 'error';
